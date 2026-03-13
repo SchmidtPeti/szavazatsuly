@@ -81,7 +81,7 @@ export default function App() {
         {step === 'slider' && oevk && (
           <div className="space-y-6">
             <MobilizSlider
-              margin={oevk.margin}
+              oevk={oevk}
               onValueChange={setMobilizCount}
             />
             <Button

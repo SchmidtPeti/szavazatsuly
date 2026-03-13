@@ -7,7 +7,15 @@
     "county": "Budapest",
     "winner_votes": 21778,
     "second_votes": 19144,
-    "margin": 2634
+    "margin": 2634,
+    "eligible_voters": 59151,
+    "turnout_votes": 44931,
+    "non_voters": 14220,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Csárdi Antal",
+    "winner_pct": 48.47,
+    "turnout_pct": 75.96
   },
   {
     "oevk_id": 2,
@@ -17,7 +25,15 @@
     "county": "Budapest",
     "winner_votes": 27881,
     "second_votes": 21864,
-    "margin": 6017
+    "margin": 6017,
+    "eligible_voters": 66197,
+    "turnout_votes": 53679,
+    "non_voters": 12518,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Orosz Anna",
+    "winner_pct": 51.94,
+    "turnout_pct": 81.09
   },
   {
     "oevk_id": 3,
@@ -27,7 +43,15 @@
     "county": "Budapest",
     "winner_votes": 25323,
     "second_votes": 21872,
-    "margin": 3451
+    "margin": 3451,
+    "eligible_voters": 63733,
+    "turnout_votes": 52299,
+    "non_voters": 11434,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Hajnal Miklós",
+    "winner_pct": 48.42,
+    "turnout_pct": 82.06
   },
   {
     "oevk_id": 4,
@@ -37,7 +61,15 @@
     "county": "Budapest",
     "winner_votes": 29993,
     "second_votes": 23468,
-    "margin": 6525
+    "margin": 6525,
+    "eligible_voters": 70532,
+    "turnout_votes": 57801,
+    "non_voters": 12731,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Tordai Bence",
+    "winner_pct": 51.89,
+    "turnout_pct": 81.95
   },
   {
     "oevk_id": 5,
@@ -47,7 +79,15 @@
     "county": "Budapest",
     "winner_votes": 20561,
     "second_votes": 15119,
-    "margin": 5442
+    "margin": 5442,
+    "eligible_voters": 58222,
+    "turnout_votes": 40010,
+    "non_voters": 18212,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Dr. Oláh Lajos",
+    "winner_pct": 51.39,
+    "turnout_pct": 68.72
   },
   {
     "oevk_id": 6,
@@ -57,7 +97,15 @@
     "county": "Budapest",
     "winner_votes": 21462,
     "second_votes": 18561,
-    "margin": 2901
+    "margin": 2901,
+    "eligible_voters": 67650,
+    "turnout_votes": 44426,
+    "non_voters": 23224,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Jámbor András",
+    "winner_pct": 48.31,
+    "turnout_pct": 65.67
   },
   {
     "oevk_id": 7,
@@ -67,7 +115,15 @@
     "county": "Budapest",
     "winner_votes": 35248,
     "second_votes": 17697,
-    "margin": 17551
+    "margin": 17551,
+    "eligible_voters": 78438,
+    "turnout_votes": 58232,
+    "non_voters": 20206,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Hiszékeny Dezső",
+    "winner_pct": 60.53,
+    "turnout_pct": 74.24
   },
   {
     "oevk_id": 8,
@@ -77,7 +133,15 @@
     "county": "Budapest",
     "winner_votes": 30159,
     "second_votes": 20373,
-    "margin": 9786
+    "margin": 9786,
+    "eligible_voters": 73997,
+    "turnout_votes": 55757,
+    "non_voters": 18240,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Dr. Hadházy Ákos",
+    "winner_pct": 54.09,
+    "turnout_pct": 75.35
   },
   {
     "oevk_id": 9,
@@ -87,7 +151,15 @@
     "county": "Budapest",
     "winner_votes": 22990,
     "second_votes": 21282,
-    "margin": 1708
+    "margin": 1708,
+    "eligible_voters": 71190,
+    "turnout_votes": 50011,
+    "non_voters": 21179,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Arató Gergely",
+    "winner_pct": 45.97,
+    "turnout_pct": 70.25
   },
   {
     "oevk_id": 10,
@@ -97,7 +169,15 @@
     "county": "Budapest",
     "winner_votes": 26051,
     "second_votes": 21940,
-    "margin": 4111
+    "margin": 4111,
+    "eligible_voters": 69049,
+    "turnout_votes": 53361,
+    "non_voters": 15688,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Szabó Tímea",
+    "winner_pct": 48.82,
+    "turnout_pct": 77.28
   },
   {
     "oevk_id": 11,
@@ -107,7 +187,15 @@
     "county": "Budapest",
     "winner_votes": 28195,
     "second_votes": 21684,
-    "margin": 6511
+    "margin": 6511,
+    "eligible_voters": 73777,
+    "turnout_votes": 55480,
+    "non_voters": 18297,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Varju László",
+    "winner_pct": 50.82,
+    "turnout_pct": 75.2
   },
   {
     "oevk_id": 12,
@@ -117,7 +205,15 @@
     "county": "Budapest",
     "winner_votes": 23397,
     "second_votes": 21987,
-    "margin": 1410
+    "margin": 1410,
+    "eligible_voters": 71090,
+    "turnout_votes": 51867,
+    "non_voters": 19223,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Barkóczi Balázs",
+    "winner_pct": 45.11,
+    "turnout_pct": 72.96
   },
   {
     "oevk_id": 13,
@@ -127,7 +223,15 @@
     "county": "Budapest",
     "winner_votes": 25080,
     "second_votes": 24612,
-    "margin": 468
+    "margin": 468,
+    "eligible_voters": 68110,
+    "turnout_votes": 55169,
+    "non_voters": 12941,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Vajda Zoltán",
+    "winner_pct": 45.46,
+    "turnout_pct": 81
   },
   {
     "oevk_id": 14,
@@ -137,7 +241,15 @@
     "county": "Budapest",
     "winner_votes": 25114,
     "second_votes": 24733,
-    "margin": 381
+    "margin": 381,
+    "eligible_voters": 73537,
+    "turnout_votes": 56234,
+    "non_voters": 17303,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dunai Mónika",
+    "winner_pct": 44.66,
+    "turnout_pct": 76.47
   },
   {
     "oevk_id": 15,
@@ -147,7 +259,15 @@
     "county": "Budapest",
     "winner_votes": 25946,
     "second_votes": 25166,
-    "margin": 780
+    "margin": 780,
+    "eligible_voters": 77309,
+    "turnout_votes": 58175,
+    "non_voters": 19134,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Kunhalmi Ágnes",
+    "winner_pct": 44.6,
+    "turnout_pct": 75.25
   },
   {
     "oevk_id": 16,
@@ -157,7 +277,15 @@
     "county": "Budapest",
     "winner_votes": 22856,
     "second_votes": 20880,
-    "margin": 1976
+    "margin": 1976,
+    "eligible_voters": 68747,
+    "turnout_votes": 49312,
+    "non_voters": 19435,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Dr. Hiller István",
+    "winner_pct": 46.35,
+    "turnout_pct": 71.73
   },
   {
     "oevk_id": 17,
@@ -167,7 +295,15 @@
     "county": "Budapest",
     "winner_votes": 24595,
     "second_votes": 22055,
-    "margin": 2540
+    "margin": 2540,
+    "eligible_voters": 73478,
+    "turnout_votes": 52904,
+    "non_voters": 20574,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Dr. Szabó Szabolcs",
+    "winner_pct": 46.49,
+    "turnout_pct": 72
   },
   {
     "oevk_id": 18,
@@ -177,7 +313,15 @@
     "county": "Budapest",
     "winner_votes": 28964,
     "second_votes": 25120,
-    "margin": 3844
+    "margin": 3844,
+    "eligible_voters": 76221,
+    "turnout_votes": 59757,
+    "non_voters": 16464,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Tóth Endre",
+    "winner_pct": 48.47,
+    "turnout_pct": 78.4
   },
   {
     "oevk_id": 19,
@@ -187,7 +331,15 @@
     "county": "Baranya",
     "winner_votes": 22710,
     "second_votes": 21557,
-    "margin": 1153
+    "margin": 1153,
+    "eligible_voters": 73434,
+    "turnout_votes": 51602,
+    "non_voters": 21832,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Dr. Mellár Tamás",
+    "winner_pct": 44.01,
+    "turnout_pct": 70.27
   },
   {
     "oevk_id": 20,
@@ -197,7 +349,15 @@
     "county": "Baranya",
     "winner_votes": 22898,
     "second_votes": 21226,
-    "margin": 1672
+    "margin": 1672,
+    "eligible_voters": 75479,
+    "turnout_votes": 51560,
+    "non_voters": 23919,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Hoppál Péter",
+    "winner_pct": 44.41,
+    "turnout_pct": 68.31
   },
   {
     "oevk_id": 21,
@@ -207,7 +367,15 @@
     "county": "Baranya",
     "winner_votes": 28172,
     "second_votes": 13954,
-    "margin": 14218
+    "margin": 14218,
+    "eligible_voters": 69601,
+    "turnout_votes": 46612,
+    "non_voters": 22989,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Hargitai János",
+    "winner_pct": 60.44,
+    "turnout_pct": 66.97
   },
   {
     "oevk_id": 22,
@@ -217,7 +385,15 @@
     "county": "Baranya",
     "winner_votes": 29403,
     "second_votes": 13835,
-    "margin": 15568
+    "margin": 15568,
+    "eligible_voters": 74519,
+    "turnout_votes": 48139,
+    "non_voters": 26380,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Nagy Csaba",
+    "winner_pct": 61.08,
+    "turnout_pct": 64.6
   },
   {
     "oevk_id": 23,
@@ -227,7 +403,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 27420,
     "second_votes": 13464,
-    "margin": 13956
+    "margin": 13956,
+    "eligible_voters": 68212,
+    "turnout_votes": 46459,
+    "non_voters": 21753,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Salacz László",
+    "winner_pct": 59.02,
+    "turnout_pct": 68.11
   },
   {
     "oevk_id": 24,
@@ -237,7 +421,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 26606,
     "second_votes": 17208,
-    "margin": 9398
+    "margin": 9398,
+    "eligible_voters": 70854,
+    "turnout_votes": 50200,
+    "non_voters": 20654,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Szeberényi Gyula Tamás",
+    "winner_pct": 53,
+    "turnout_pct": 70.85
   },
   {
     "oevk_id": 25,
@@ -247,7 +439,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 26592,
     "second_votes": 13464,
-    "margin": 13128
+    "margin": 13128,
+    "eligible_voters": 64387,
+    "turnout_votes": 44543,
+    "non_voters": 19844,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Font Sándor",
+    "winner_pct": 59.7,
+    "turnout_pct": 69.18
   },
   {
     "oevk_id": 26,
@@ -257,7 +457,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 29835,
     "second_votes": 11727,
-    "margin": 18108
+    "margin": 18108,
+    "eligible_voters": 70632,
+    "turnout_votes": 47380,
+    "non_voters": 23252,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Lezsák Sándor",
+    "winner_pct": 62.97,
+    "turnout_pct": 67.08
   },
   {
     "oevk_id": 27,
@@ -267,7 +475,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 25763,
     "second_votes": 12218,
-    "margin": 13545
+    "margin": 13545,
+    "eligible_voters": 67270,
+    "turnout_votes": 42824,
+    "non_voters": 24446,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Bányai Gábor",
+    "winner_pct": 60.16,
+    "turnout_pct": 63.66
   },
   {
     "oevk_id": 28,
@@ -277,7 +493,15 @@
     "county": "Bács-Kiskun",
     "winner_votes": 23976,
     "second_votes": 13697,
-    "margin": 10279
+    "margin": 10279,
+    "eligible_voters": 63722,
+    "turnout_votes": 41872,
+    "non_voters": 21850,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Zsigy Róbert",
+    "winner_pct": 57.26,
+    "turnout_pct": 65.71
   },
   {
     "oevk_id": 29,
@@ -287,7 +511,15 @@
     "county": "Békés",
     "winner_votes": 22920,
     "second_votes": 19019,
-    "margin": 3901
+    "margin": 3901,
+    "eligible_voters": 67428,
+    "turnout_votes": 47483,
+    "non_voters": 19945,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Herczeg Tamás",
+    "winner_pct": 48.27,
+    "turnout_pct": 70.42
   },
   {
     "oevk_id": 30,
@@ -297,7 +529,15 @@
     "county": "Békés",
     "winner_votes": 25716,
     "second_votes": 13086,
-    "margin": 12630
+    "margin": 12630,
+    "eligible_voters": 68157,
+    "turnout_votes": 44561,
+    "non_voters": 23596,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dankó Béla",
+    "winner_pct": 57.71,
+    "turnout_pct": 65.38
   },
   {
     "oevk_id": 31,
@@ -307,7 +547,15 @@
     "county": "Békés",
     "winner_votes": 24623,
     "second_votes": 14982,
-    "margin": 9641
+    "margin": 9641,
+    "eligible_voters": 66776,
+    "turnout_votes": 44159,
+    "non_voters": 22617,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Kovács József",
+    "winner_pct": 55.76,
+    "turnout_pct": 66.13
   },
   {
     "oevk_id": 32,
@@ -317,7 +565,15 @@
     "county": "Békés",
     "winner_votes": 22379,
     "second_votes": 17821,
-    "margin": 4558
+    "margin": 4558,
+    "eligible_voters": 70242,
+    "turnout_votes": 44920,
+    "non_voters": 25322,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Erdős Norbert",
+    "winner_pct": 49.82,
+    "turnout_pct": 63.95
   },
   {
     "oevk_id": 33,
@@ -327,7 +583,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 22978,
     "second_votes": 20442,
-    "margin": 2536
+    "margin": 2536,
+    "eligible_voters": 71689,
+    "turnout_votes": 49415,
+    "non_voters": 22274,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Csábár Katalin",
+    "winner_pct": 46.5,
+    "turnout_pct": 68.93
   },
   {
     "oevk_id": 34,
@@ -337,7 +601,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 20602,
     "second_votes": 20110,
-    "margin": 492
+    "margin": 492,
+    "eligible_voters": 70471,
+    "turnout_votes": 46983,
+    "non_voters": 23488,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Kiss János",
+    "winner_pct": 43.85,
+    "turnout_pct": 66.67
   },
   {
     "oevk_id": 35,
@@ -347,7 +619,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 23686,
     "second_votes": 10884,
-    "margin": 12802
+    "margin": 12802,
+    "eligible_voters": 69227,
+    "turnout_votes": 40193,
+    "non_voters": 29034,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Riz Gábor",
+    "winner_pct": 58.93,
+    "turnout_pct": 58.06
   },
   {
     "oevk_id": 36,
@@ -357,7 +637,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 24636,
     "second_votes": 15648,
-    "margin": 8988
+    "margin": 8988,
+    "eligible_voters": 72986,
+    "turnout_votes": 45295,
+    "non_voters": 27691,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Demeter Zoltán",
+    "winner_pct": 54.39,
+    "turnout_pct": 62.06
   },
   {
     "oevk_id": 37,
@@ -367,7 +655,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 27335,
     "second_votes": 13526,
-    "margin": 13809
+    "margin": 13809,
+    "eligible_voters": 71918,
+    "turnout_votes": 45107,
+    "non_voters": 26811,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Hárcsik Richárd",
+    "winner_pct": 60.6,
+    "turnout_pct": 62.72
   },
   {
     "oevk_id": 38,
@@ -377,7 +673,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 29737,
     "second_votes": 18618,
-    "margin": 11119
+    "margin": 11119,
+    "eligible_voters": 75014,
+    "turnout_votes": 50402,
+    "non_voters": 24612,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Koncz Zséfia",
+    "winner_pct": 59,
+    "turnout_pct": 67.19
   },
   {
     "oevk_id": 39,
@@ -387,7 +691,15 @@
     "county": "Borsod-Abaúj-Zemplén",
     "winner_votes": 29907,
     "second_votes": 13343,
-    "margin": 16564
+    "margin": 16564,
+    "eligible_voters": 74134,
+    "turnout_votes": 49499,
+    "non_voters": 24635,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Túllai András",
+    "winner_pct": 60.42,
+    "turnout_pct": 66.77
   },
   {
     "oevk_id": 40,
@@ -397,7 +709,15 @@
     "county": "Csongrád-Csanád",
     "winner_votes": 27443,
     "second_votes": 20159,
-    "margin": 7284
+    "margin": 7284,
+    "eligible_voters": 79594,
+    "turnout_votes": 55429,
+    "non_voters": 24165,
+    "winner_party": "Ellenzéki összefogás",
+    "second_party": "Fidesz–KDNP",
+    "winner_name": "Szabó Sándor",
+    "winner_pct": 49.51,
+    "turnout_pct": 69.64
   },
   {
     "oevk_id": 41,
@@ -407,7 +727,15 @@
     "county": "Csongrád-Csanád",
     "winner_votes": 27516,
     "second_votes": 24443,
-    "margin": 3073
+    "margin": 3073,
+    "eligible_voters": 85342,
+    "turnout_votes": 60755,
+    "non_voters": 24587,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Mihálffi Béla",
+    "winner_pct": 45.29,
+    "turnout_pct": 71.19
   },
   {
     "oevk_id": 42,
@@ -417,7 +745,15 @@
     "county": "Csongrád-Csanád",
     "winner_votes": 29582,
     "second_votes": 16947,
-    "margin": 12635
+    "margin": 12635,
+    "eligible_voters": 79146,
+    "turnout_votes": 54041,
+    "non_voters": 25105,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Farkas Sándor",
+    "winner_pct": 54.74,
+    "turnout_pct": 68.28
   },
   {
     "oevk_id": 43,
@@ -427,7 +763,15 @@
     "county": "Csongrád-Csanád",
     "winner_votes": 28753,
     "second_votes": 22328,
-    "margin": 6425
+    "margin": 6425,
+    "eligible_voters": 76323,
+    "turnout_votes": 55540,
+    "non_voters": 20783,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Lázár János",
+    "winner_pct": 51.77,
+    "turnout_pct": 72.77
   },
   {
     "oevk_id": 44,
@@ -437,7 +781,15 @@
     "county": "Fejér",
     "winner_votes": 21546,
     "second_votes": 18994,
-    "margin": 2552
+    "margin": 2552,
+    "eligible_voters": 59428,
+    "turnout_votes": 45427,
+    "non_voters": 14001,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Vargha Tamás",
+    "winner_pct": 47.43,
+    "turnout_pct": 76.44
   },
   {
     "oevk_id": 45,
@@ -447,7 +799,15 @@
     "county": "Fejér",
     "winner_votes": 28380,
     "second_votes": 15219,
-    "margin": 13161
+    "margin": 13161,
+    "eligible_voters": 69392,
+    "turnout_votes": 50670,
+    "non_voters": 18722,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Tóró Gábor",
+    "winner_pct": 56.01,
+    "turnout_pct": 73.02
   },
   {
     "oevk_id": 46,
@@ -457,7 +817,15 @@
     "county": "Fejér",
     "winner_votes": 32520,
     "second_votes": 18092,
-    "margin": 14428
+    "margin": 14428,
+    "eligible_voters": 75760,
+    "turnout_votes": 56714,
+    "non_voters": 19046,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Tessely Zoltán",
+    "winner_pct": 57.34,
+    "turnout_pct": 74.86
   },
   {
     "oevk_id": 47,
@@ -467,7 +835,15 @@
     "county": "Fejér",
     "winner_votes": 20562,
     "second_votes": 19509,
-    "margin": 1053
+    "margin": 1053,
+    "eligible_voters": 65043,
+    "turnout_votes": 44535,
+    "non_voters": 20508,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Mészáros Lajos",
+    "winner_pct": 46.17,
+    "turnout_pct": 68.47
   },
   {
     "oevk_id": 48,
@@ -477,7 +853,15 @@
     "county": "Fejér",
     "winner_votes": 27629,
     "second_votes": 10441,
-    "margin": 17188
+    "margin": 17188,
+    "eligible_voters": 66452,
+    "turnout_votes": 42802,
+    "non_voters": 23650,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Varga Gábor",
+    "winner_pct": 64.55,
+    "turnout_pct": 64.41
   },
   {
     "oevk_id": 49,
@@ -487,7 +871,15 @@
     "county": "Győr-Moson-Sopron",
     "winner_votes": 24182,
     "second_votes": 18356,
-    "margin": 5826
+    "margin": 5826,
+    "eligible_voters": 65900,
+    "turnout_votes": 47942,
+    "non_voters": 17958,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Simon Róbert Balázs",
+    "winner_pct": 50.44,
+    "turnout_pct": 72.75
   },
   {
     "oevk_id": 50,
@@ -497,7 +889,15 @@
     "county": "Győr-Moson-Sopron",
     "winner_votes": 31661,
     "second_votes": 16517,
-    "margin": 15144
+    "margin": 15144,
+    "eligible_voters": 72168,
+    "turnout_votes": 52654,
+    "non_voters": 19514,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Kara Ákos",
+    "winner_pct": 60.13,
+    "turnout_pct": 72.96
   },
   {
     "oevk_id": 51,
@@ -507,7 +907,15 @@
     "county": "Győr-Moson-Sopron",
     "winner_votes": 35119,
     "second_votes": 10592,
-    "margin": 24527
+    "margin": 24527,
+    "eligible_voters": 65906,
+    "turnout_votes": 49311,
+    "non_voters": 16595,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Gyopáros Alpár",
+    "winner_pct": 71.22,
+    "turnout_pct": 74.82
   },
   {
     "oevk_id": 52,
@@ -517,7 +925,15 @@
     "county": "Győr-Moson-Sopron",
     "winner_votes": 32394,
     "second_votes": 18786,
-    "margin": 13608
+    "margin": 13608,
+    "eligible_voters": 74440,
+    "turnout_votes": 56485,
+    "non_voters": 17955,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Barcza Attila",
+    "winner_pct": 57.35,
+    "turnout_pct": 75.88
   },
   {
     "oevk_id": 53,
@@ -527,7 +943,15 @@
     "county": "Győr-Moson-Sopron",
     "winner_votes": 32549,
     "second_votes": 16746,
-    "margin": 15803
+    "margin": 15803,
+    "eligible_voters": 76103,
+    "turnout_votes": 54954,
+    "non_voters": 21149,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Nagy István",
+    "winner_pct": 59.23,
+    "turnout_pct": 72.21
   },
   {
     "oevk_id": 54,
@@ -537,7 +961,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 23385,
     "second_votes": 18994,
-    "margin": 4391
+    "margin": 4391,
+    "eligible_voters": 65559,
+    "turnout_votes": 47773,
+    "non_voters": 17786,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Kósa Lajos",
+    "winner_pct": 48.95,
+    "turnout_pct": 72.87
   },
   {
     "oevk_id": 55,
@@ -547,7 +979,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 27111,
     "second_votes": 19560,
-    "margin": 7551
+    "margin": 7551,
+    "eligible_voters": 70984,
+    "turnout_votes": 48752,
+    "non_voters": 22232,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Pásan László",
+    "winner_pct": 55.61,
+    "turnout_pct": 68.68
   },
   {
     "oevk_id": 56,
@@ -557,7 +997,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 31266,
     "second_votes": 13627,
-    "margin": 17639
+    "margin": 17639,
+    "eligible_voters": 77078,
+    "turnout_votes": 49230,
+    "non_voters": 27848,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Tasó László",
+    "winner_pct": 63.51,
+    "turnout_pct": 63.87
   },
   {
     "oevk_id": 57,
@@ -567,7 +1015,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 25407,
     "second_votes": 9483,
-    "margin": 15924
+    "margin": 15924,
+    "eligible_voters": 66664,
+    "turnout_votes": 41205,
+    "non_voters": 25459,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Vitányi István",
+    "winner_pct": 61.66,
+    "turnout_pct": 61.81
   },
   {
     "oevk_id": 58,
@@ -577,7 +1033,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 26982,
     "second_votes": 13529,
-    "margin": 13453
+    "margin": 13453,
+    "eligible_voters": 68678,
+    "turnout_votes": 44517,
+    "non_voters": 24161,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Bodó Sándor",
+    "winner_pct": 60.61,
+    "turnout_pct": 64.82
   },
   {
     "oevk_id": 59,
@@ -587,7 +1051,15 @@
     "county": "Hajdú-Bihar",
     "winner_votes": 26062,
     "second_votes": 13929,
-    "margin": 12133
+    "margin": 12133,
+    "eligible_voters": 68746,
+    "turnout_votes": 44788,
+    "non_voters": 23958,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Tiba István",
+    "winner_pct": 58.19,
+    "turnout_pct": 65.15
   },
   {
     "oevk_id": 60,
@@ -597,7 +1069,15 @@
     "county": "Heves",
     "winner_votes": 29703,
     "second_votes": 20772,
-    "margin": 8931
+    "margin": 8931,
+    "eligible_voters": 80238,
+    "turnout_votes": 56913,
+    "non_voters": 23325,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Pajtók Gábor",
+    "winner_pct": 52.19,
+    "turnout_pct": 70.93
   },
   {
     "oevk_id": 61,
@@ -607,7 +1087,15 @@
     "county": "Heves",
     "winner_votes": 28878,
     "second_votes": 19148,
-    "margin": 9730
+    "margin": 9730,
+    "eligible_voters": 75868,
+    "turnout_votes": 52592,
+    "non_voters": 23276,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Horváth László",
+    "winner_pct": 54.91,
+    "turnout_pct": 69.32
   },
   {
     "oevk_id": 62,
@@ -617,7 +1105,15 @@
     "county": "Heves",
     "winner_votes": 30863,
     "second_votes": 15450,
-    "margin": 15413
+    "margin": 15413,
+    "eligible_voters": 78405,
+    "turnout_votes": 52257,
+    "non_voters": 26148,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Szabó Zsolt",
+    "winner_pct": 59.06,
+    "turnout_pct": 66.65
   },
   {
     "oevk_id": 63,
@@ -627,7 +1123,15 @@
     "county": "Jász-Nagykun-Szolnok",
     "winner_votes": 24972,
     "second_votes": 20864,
-    "margin": 4108
+    "margin": 4108,
+    "eligible_voters": 76234,
+    "turnout_votes": 53234,
+    "non_voters": 23000,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Kállay Mária",
+    "winner_pct": 46.91,
+    "turnout_pct": 69.83
   },
   {
     "oevk_id": 64,
@@ -637,7 +1141,15 @@
     "county": "Jász-Nagykun-Szolnok",
     "winner_votes": 28215,
     "second_votes": 15915,
-    "margin": 12300
+    "margin": 12300,
+    "eligible_voters": 70001,
+    "turnout_votes": 47174,
+    "non_voters": 22827,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Pécs János",
+    "winner_pct": 59.81,
+    "turnout_pct": 67.39
   },
   {
     "oevk_id": 65,
@@ -647,7 +1159,15 @@
     "county": "Jász-Nagykun-Szolnok",
     "winner_votes": 29923,
     "second_votes": 13614,
-    "margin": 16309
+    "margin": 16309,
+    "eligible_voters": 73900,
+    "turnout_votes": 46653,
+    "non_voters": 27247,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "F. Kovács Sándor",
+    "winner_pct": 64.14,
+    "turnout_pct": 63.13
   },
   {
     "oevk_id": 66,
@@ -657,7 +1177,15 @@
     "county": "Jász-Nagykun-Szolnok",
     "winner_votes": 23667,
     "second_votes": 17047,
-    "margin": 6620
+    "margin": 6620,
+    "eligible_voters": 72668,
+    "turnout_votes": 45955,
+    "non_voters": 26713,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Herczeg Zsolt",
+    "winner_pct": 51.5,
+    "turnout_pct": 63.24
   },
   {
     "oevk_id": 67,
@@ -667,7 +1195,15 @@
     "county": "Komárom-Esztergom",
     "winner_votes": 26240,
     "second_votes": 22417,
-    "margin": 3823
+    "margin": 3823,
+    "eligible_voters": 77792,
+    "turnout_votes": 54462,
+    "non_voters": 23330,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Bencsik János",
+    "winner_pct": 48.18,
+    "turnout_pct": 70.01
   },
   {
     "oevk_id": 68,
@@ -677,7 +1213,15 @@
     "county": "Komárom-Esztergom",
     "winner_votes": 27795,
     "second_votes": 21587,
-    "margin": 6208
+    "margin": 6208,
+    "eligible_voters": 80712,
+    "turnout_votes": 55635,
+    "non_voters": 25077,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Erős Gábor",
+    "winner_pct": 49.96,
+    "turnout_pct": 68.93
   },
   {
     "oevk_id": 69,
@@ -687,7 +1231,15 @@
     "county": "Komárom-Esztergom",
     "winner_votes": 30965,
     "second_votes": 18605,
-    "margin": 12360
+    "margin": 12360,
+    "eligible_voters": 81340,
+    "turnout_votes": 56198,
+    "non_voters": 25142,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Czunyiné Dr. Bertalan Judit",
+    "winner_pct": 55.1,
+    "turnout_pct": 69.09
   },
   {
     "oevk_id": 70,
@@ -697,7 +1249,15 @@
     "county": "Nógrád",
     "winner_votes": 26023,
     "second_votes": 17467,
-    "margin": 8556
+    "margin": 8556,
+    "eligible_voters": 73959,
+    "turnout_votes": 48325,
+    "non_voters": 25634,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Becsa Zsolt",
+    "winner_pct": 53.85,
+    "turnout_pct": 65.34
   },
   {
     "oevk_id": 71,
@@ -707,7 +1267,15 @@
     "county": "Nógrád",
     "winner_votes": 31921,
     "second_votes": 12722,
-    "margin": 19199
+    "margin": 19199,
+    "eligible_voters": 77666,
+    "turnout_votes": 53131,
+    "non_voters": 24535,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Balla Mihály",
+    "winner_pct": 60.08,
+    "turnout_pct": 68.41
   },
   {
     "oevk_id": 72,
@@ -717,7 +1285,15 @@
     "county": "Pest",
     "winner_votes": 29597,
     "second_votes": 28076,
-    "margin": 1521
+    "margin": 1521,
+    "eligible_voters": 86167,
+    "turnout_votes": 65220,
+    "non_voters": 20947,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Aradszki András",
+    "winner_pct": 45.38,
+    "turnout_pct": 75.69
   },
   {
     "oevk_id": 73,
@@ -727,7 +1303,15 @@
     "county": "Pest",
     "winner_votes": 34810,
     "second_votes": 33432,
-    "margin": 1378
+    "margin": 1378,
+    "eligible_voters": 93315,
+    "turnout_votes": 74428,
+    "non_voters": 18887,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Menczer Tamás",
+    "winner_pct": 46.77,
+    "turnout_pct": 79.76
   },
   {
     "oevk_id": 74,
@@ -737,7 +1321,15 @@
     "county": "Pest",
     "winner_votes": 36877,
     "second_votes": 26540,
-    "margin": 10337
+    "margin": 10337,
+    "eligible_voters": 91317,
+    "turnout_votes": 70999,
+    "non_voters": 20318,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Vitályos Eszter",
+    "winner_pct": 51.94,
+    "turnout_pct": 77.75
   },
   {
     "oevk_id": 75,
@@ -747,7 +1339,15 @@
     "county": "Pest",
     "winner_votes": 30747,
     "second_votes": 18759,
-    "margin": 11988
+    "margin": 11988,
+    "eligible_voters": 74187,
+    "turnout_votes": 55440,
+    "non_voters": 18747,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Rátvári Bence",
+    "winner_pct": 55.46,
+    "turnout_pct": 74.73
   },
   {
     "oevk_id": 76,
@@ -757,7 +1357,15 @@
     "county": "Pest",
     "winner_votes": 34390,
     "second_votes": 31228,
-    "margin": 3162
+    "margin": 3162,
+    "eligible_voters": 96613,
+    "turnout_votes": 74276,
+    "non_voters": 22337,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Tuzson Bence",
+    "winner_pct": 46.3,
+    "turnout_pct": 76.88
   },
   {
     "oevk_id": 77,
@@ -767,7 +1375,15 @@
     "county": "Pest",
     "winner_votes": 33188,
     "second_votes": 25826,
-    "margin": 7362
+    "margin": 7362,
+    "eligible_voters": 89892,
+    "turnout_votes": 67662,
+    "non_voters": 22230,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Vácsey László",
+    "winner_pct": 49.05,
+    "turnout_pct": 75.27
   },
   {
     "oevk_id": 78,
@@ -777,7 +1393,15 @@
     "county": "Pest",
     "winner_votes": 31623,
     "second_votes": 23449,
-    "margin": 8174
+    "margin": 8174,
+    "eligible_voters": 89532,
+    "turnout_votes": 64248,
+    "non_voters": 25284,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Szávay István",
+    "winner_pct": 49.22,
+    "turnout_pct": 71.76
   },
   {
     "oevk_id": 79,
@@ -787,7 +1411,15 @@
     "county": "Pest",
     "winner_votes": 29584,
     "second_votes": 27701,
-    "margin": 1883
+    "margin": 1883,
+    "eligible_voters": 91117,
+    "turnout_votes": 64948,
+    "non_voters": 26169,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Béna Zoltán",
+    "winner_pct": 45.55,
+    "turnout_pct": 71.28
   },
   {
     "oevk_id": 80,
@@ -797,7 +1429,15 @@
     "county": "Pest",
     "winner_votes": 29632,
     "second_votes": 14096,
-    "margin": 15536
+    "margin": 15536,
+    "eligible_voters": 75725,
+    "turnout_votes": 49206,
+    "non_voters": 26519,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Czerván György",
+    "winner_pct": 60.22,
+    "turnout_pct": 64.98
   },
   {
     "oevk_id": 81,
@@ -807,7 +1447,15 @@
     "county": "Pest",
     "winner_votes": 30973,
     "second_votes": 14797,
-    "margin": 16176
+    "margin": 16176,
+    "eligible_voters": 78062,
+    "turnout_votes": 51872,
+    "non_voters": 26190,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Pogácsás Tibor",
+    "winner_pct": 59.71,
+    "turnout_pct": 66.45
   },
   {
     "oevk_id": 82,
@@ -817,7 +1465,15 @@
     "county": "Pest",
     "winner_votes": 35513,
     "second_votes": 19824,
-    "margin": 15689
+    "margin": 15689,
+    "eligible_voters": 87983,
+    "turnout_votes": 62512,
+    "non_voters": 25471,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Pánczál Károly",
+    "winner_pct": 56.81,
+    "turnout_pct": 71.05
   },
   {
     "oevk_id": 83,
@@ -827,7 +1483,15 @@
     "county": "Pest",
     "winner_votes": 28244,
     "second_votes": 13696,
-    "margin": 14548
+    "margin": 14548,
+    "eligible_voters": 73162,
+    "turnout_votes": 47782,
+    "non_voters": 25380,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Féldi László",
+    "winner_pct": 59.11,
+    "turnout_pct": 65.31
   },
   {
     "oevk_id": 84,
@@ -837,7 +1501,15 @@
     "county": "Somogy",
     "winner_votes": 20062,
     "second_votes": 14670,
-    "margin": 5392
+    "margin": 5392,
+    "eligible_voters": 60311,
+    "turnout_votes": 42121,
+    "non_voters": 18190,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Gelencsér Attila",
+    "winner_pct": 47.63,
+    "turnout_pct": 69.84
   },
   {
     "oevk_id": 85,
@@ -847,7 +1519,15 @@
     "county": "Somogy",
     "winner_votes": 21571,
     "second_votes": 13855,
-    "margin": 7716
+    "margin": 7716,
+    "eligible_voters": 58352,
+    "turnout_votes": 37281,
+    "non_voters": 21071,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Szászfalvi László",
+    "winner_pct": 57.86,
+    "turnout_pct": 63.89
   },
   {
     "oevk_id": 86,
@@ -857,7 +1537,15 @@
     "county": "Somogy",
     "winner_votes": 24171,
     "second_votes": 14776,
-    "margin": 9395
+    "margin": 9395,
+    "eligible_voters": 61362,
+    "turnout_votes": 41732,
+    "non_voters": 19630,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Máring József Attila",
+    "winner_pct": 57.92,
+    "turnout_pct": 68.01
   },
   {
     "oevk_id": 87,
@@ -867,7 +1555,15 @@
     "county": "Somogy",
     "winner_votes": 26834,
     "second_votes": 16010,
-    "margin": 10824
+    "margin": 10824,
+    "eligible_voters": 63420,
+    "turnout_votes": 44768,
+    "non_voters": 18652,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Witzmann Mihály",
+    "winner_pct": 59.94,
+    "turnout_pct": 70.59
   },
   {
     "oevk_id": 88,
@@ -877,7 +1573,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 23254,
     "second_votes": 21806,
-    "margin": 1448
+    "margin": 1448,
+    "eligible_voters": 72800,
+    "turnout_votes": 51768,
+    "non_voters": 21032,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Szabó Tünde",
+    "winner_pct": 44.92,
+    "turnout_pct": 71.11
   },
   {
     "oevk_id": 89,
@@ -887,7 +1591,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 26277,
     "second_votes": 14759,
-    "margin": 11518
+    "margin": 11518,
+    "eligible_voters": 70214,
+    "turnout_votes": 45204,
+    "non_voters": 25010,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Vinnai Győző",
+    "winner_pct": 58.13,
+    "turnout_pct": 64.38
   },
   {
     "oevk_id": 90,
@@ -897,7 +1609,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 31946,
     "second_votes": 12781,
-    "margin": 19165
+    "margin": 19165,
+    "eligible_voters": 76202,
+    "turnout_votes": 48914,
+    "non_voters": 27288,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Szesztók Miklós",
+    "winner_pct": 65.31,
+    "turnout_pct": 64.19
   },
   {
     "oevk_id": 91,
@@ -907,7 +1627,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 31523,
     "second_votes": 11404,
-    "margin": 20119
+    "margin": 20119,
+    "eligible_voters": 71383,
+    "turnout_votes": 45878,
+    "non_voters": 25505,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Tilki Attila",
+    "winner_pct": 68.71,
+    "turnout_pct": 64.27
   },
   {
     "oevk_id": 92,
@@ -917,7 +1645,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 29647,
     "second_votes": 11250,
-    "margin": 18397
+    "margin": 18397,
+    "eligible_voters": 71813,
+    "turnout_votes": 45759,
+    "non_voters": 26054,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Kovács Sándor",
+    "winner_pct": 64.79,
+    "turnout_pct": 63.72
   },
   {
     "oevk_id": 93,
@@ -927,7 +1663,15 @@
     "county": "Szabolcs-Szatmár-Bereg",
     "winner_votes": 29875,
     "second_votes": 12027,
-    "margin": 17848
+    "margin": 17848,
+    "eligible_voters": 70216,
+    "turnout_votes": 45479,
+    "non_voters": 24737,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Simon Miklós",
+    "winner_pct": 65.69,
+    "turnout_pct": 64.77
   },
   {
     "oevk_id": 94,
@@ -937,7 +1681,15 @@
     "county": "Tolna",
     "winner_votes": 22642,
     "second_votes": 14279,
-    "margin": 8363
+    "margin": 8363,
+    "eligible_voters": 58546,
+    "turnout_votes": 40789,
+    "non_voters": 17757,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Horváth István",
+    "winner_pct": 55.51,
+    "turnout_pct": 69.67
   },
   {
     "oevk_id": 95,
@@ -947,7 +1699,15 @@
     "county": "Tolna",
     "winner_votes": 24362,
     "second_votes": 10536,
-    "margin": 13826
+    "margin": 13826,
+    "eligible_voters": 57735,
+    "turnout_votes": 39017,
+    "non_voters": 18718,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Potápi Árpád János",
+    "winner_pct": 62.44,
+    "turnout_pct": 67.58
   },
   {
     "oevk_id": 96,
@@ -957,7 +1717,15 @@
     "county": "Tolna",
     "winner_votes": 25102,
     "second_votes": 11107,
-    "margin": 13995
+    "margin": 13995,
+    "eligible_voters": 57781,
+    "turnout_votes": 39857,
+    "non_voters": 17924,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Sáli János",
+    "winner_pct": 62.98,
+    "turnout_pct": 68.98
   },
   {
     "oevk_id": 97,
@@ -967,7 +1735,15 @@
     "county": "Vas",
     "winner_votes": 25792,
     "second_votes": 20771,
-    "margin": 5021
+    "margin": 5021,
+    "eligible_voters": 67578,
+    "turnout_votes": 51636,
+    "non_voters": 15942,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Hende Csaba",
+    "winner_pct": 49.95,
+    "turnout_pct": 76.41
   },
   {
     "oevk_id": 98,
@@ -977,7 +1753,15 @@
     "county": "Vas",
     "winner_votes": 32226,
     "second_votes": 13026,
-    "margin": 19200
+    "margin": 19200,
+    "eligible_voters": 67280,
+    "turnout_votes": 50056,
+    "non_voters": 17224,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Ágh Péter",
+    "winner_pct": 64.38,
+    "turnout_pct": 74.4
   },
   {
     "oevk_id": 99,
@@ -987,7 +1771,15 @@
     "county": "Vas",
     "winner_votes": 31938,
     "second_votes": 12874,
-    "margin": 19064
+    "margin": 19064,
+    "eligible_voters": 65308,
+    "turnout_votes": 48099,
+    "non_voters": 17209,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "V. Németh Zsolt",
+    "winner_pct": 66.4,
+    "turnout_pct": 73.65
   },
   {
     "oevk_id": 100,
@@ -997,7 +1789,15 @@
     "county": "Veszprém",
     "winner_votes": 26119,
     "second_votes": 20301,
-    "margin": 5818
+    "margin": 5818,
+    "eligible_voters": 69442,
+    "turnout_votes": 51741,
+    "non_voters": 17701,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Ovádi Péter",
+    "winner_pct": 50.48,
+    "turnout_pct": 74.51
   },
   {
     "oevk_id": 101,
@@ -1007,7 +1807,15 @@
     "county": "Veszprém",
     "winner_votes": 26762,
     "second_votes": 19172,
-    "margin": 7590
+    "margin": 7590,
+    "eligible_voters": 72785,
+    "turnout_votes": 52485,
+    "non_voters": 20300,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Kontrát Károly",
+    "winner_pct": 50.99,
+    "turnout_pct": 72.11
   },
   {
     "oevk_id": 102,
@@ -1017,7 +1825,15 @@
     "county": "Veszprém",
     "winner_votes": 23685,
     "second_votes": 20797,
-    "margin": 2888
+    "margin": 2888,
+    "eligible_voters": 66737,
+    "turnout_votes": 46716,
+    "non_voters": 20021,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Navracsics Tibor",
+    "winner_pct": 50.7,
+    "turnout_pct": 70
   },
   {
     "oevk_id": 103,
@@ -1027,7 +1843,15 @@
     "county": "Veszprém",
     "winner_votes": 29806,
     "second_votes": 13826,
-    "margin": 15980
+    "margin": 15980,
+    "eligible_voters": 67524,
+    "turnout_votes": 47537,
+    "non_voters": 19987,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Dr. Kovács Zoltán",
+    "winner_pct": 62.7,
+    "turnout_pct": 70.4
   },
   {
     "oevk_id": 104,
@@ -1037,7 +1861,15 @@
     "county": "Zala",
     "winner_votes": 31178,
     "second_votes": 16987,
-    "margin": 14191
+    "margin": 14191,
+    "eligible_voters": 73758,
+    "turnout_votes": 54891,
+    "non_voters": 18867,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Vigh László",
+    "winner_pct": 56.8,
+    "turnout_pct": 74.42
   },
   {
     "oevk_id": 105,
@@ -1047,7 +1879,15 @@
     "county": "Zala",
     "winner_votes": 30734,
     "second_votes": 15467,
-    "margin": 15267
+    "margin": 15267,
+    "eligible_voters": 72820,
+    "turnout_votes": 51360,
+    "non_voters": 21460,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Nagy Bálint",
+    "winner_pct": 59.84,
+    "turnout_pct": 70.53
   },
   {
     "oevk_id": 106,
@@ -1057,6 +1897,14 @@
     "county": "Zala",
     "winner_votes": 26126,
     "second_votes": 18466,
-    "margin": 7660
+    "margin": 7660,
+    "eligible_voters": 70832,
+    "turnout_votes": 49313,
+    "non_voters": 21519,
+    "winner_party": "Fidesz–KDNP",
+    "second_party": "Ellenzéki összefogás",
+    "winner_name": "Cseresnyés Péter",
+    "winner_pct": 52.98,
+    "turnout_pct": 69.62
   }
 ]

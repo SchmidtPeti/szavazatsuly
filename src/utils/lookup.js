@@ -24,6 +24,5 @@ export async function lookupByZip(zip) {
   const oevkId = zipData[trimmed]
   if (!oevkId) return null
 
-  const oevk = oevkData.find((o) => o.oevk_id === oevkId)
-  return oevk || null
+  return oevkData.find((o) => o.oevk_id === oevkId) || null
 }
