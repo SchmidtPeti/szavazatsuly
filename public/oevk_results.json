@@ -1,0 +1,1062 @@
+[
+  {
+    "oevk_id": 1,
+    "maz": "01",
+    "evk": "01",
+    "oevk_name": "Budapest 01. OEVK",
+    "county": "Budapest",
+    "winner_votes": 21778,
+    "second_votes": 19144,
+    "margin": 2634
+  },
+  {
+    "oevk_id": 2,
+    "maz": "01",
+    "evk": "02",
+    "oevk_name": "Budapest 02. OEVK",
+    "county": "Budapest",
+    "winner_votes": 27881,
+    "second_votes": 21864,
+    "margin": 6017
+  },
+  {
+    "oevk_id": 3,
+    "maz": "01",
+    "evk": "03",
+    "oevk_name": "Budapest 03. OEVK",
+    "county": "Budapest",
+    "winner_votes": 25323,
+    "second_votes": 21872,
+    "margin": 3451
+  },
+  {
+    "oevk_id": 4,
+    "maz": "01",
+    "evk": "04",
+    "oevk_name": "Budapest 04. OEVK",
+    "county": "Budapest",
+    "winner_votes": 29993,
+    "second_votes": 23468,
+    "margin": 6525
+  },
+  {
+    "oevk_id": 5,
+    "maz": "01",
+    "evk": "05",
+    "oevk_name": "Budapest 05. OEVK",
+    "county": "Budapest",
+    "winner_votes": 20561,
+    "second_votes": 15119,
+    "margin": 5442
+  },
+  {
+    "oevk_id": 6,
+    "maz": "01",
+    "evk": "06",
+    "oevk_name": "Budapest 06. OEVK",
+    "county": "Budapest",
+    "winner_votes": 21462,
+    "second_votes": 18561,
+    "margin": 2901
+  },
+  {
+    "oevk_id": 7,
+    "maz": "01",
+    "evk": "07",
+    "oevk_name": "Budapest 07. OEVK",
+    "county": "Budapest",
+    "winner_votes": 35248,
+    "second_votes": 17697,
+    "margin": 17551
+  },
+  {
+    "oevk_id": 8,
+    "maz": "01",
+    "evk": "08",
+    "oevk_name": "Budapest 08. OEVK",
+    "county": "Budapest",
+    "winner_votes": 30159,
+    "second_votes": 20373,
+    "margin": 9786
+  },
+  {
+    "oevk_id": 9,
+    "maz": "01",
+    "evk": "09",
+    "oevk_name": "Budapest 09. OEVK",
+    "county": "Budapest",
+    "winner_votes": 22990,
+    "second_votes": 21282,
+    "margin": 1708
+  },
+  {
+    "oevk_id": 10,
+    "maz": "01",
+    "evk": "10",
+    "oevk_name": "Budapest 10. OEVK",
+    "county": "Budapest",
+    "winner_votes": 26051,
+    "second_votes": 21940,
+    "margin": 4111
+  },
+  {
+    "oevk_id": 11,
+    "maz": "01",
+    "evk": "11",
+    "oevk_name": "Budapest 11. OEVK",
+    "county": "Budapest",
+    "winner_votes": 28195,
+    "second_votes": 21684,
+    "margin": 6511
+  },
+  {
+    "oevk_id": 12,
+    "maz": "01",
+    "evk": "12",
+    "oevk_name": "Budapest 12. OEVK",
+    "county": "Budapest",
+    "winner_votes": 23397,
+    "second_votes": 21987,
+    "margin": 1410
+  },
+  {
+    "oevk_id": 13,
+    "maz": "01",
+    "evk": "13",
+    "oevk_name": "Budapest 13. OEVK",
+    "county": "Budapest",
+    "winner_votes": 25080,
+    "second_votes": 24612,
+    "margin": 468
+  },
+  {
+    "oevk_id": 14,
+    "maz": "01",
+    "evk": "14",
+    "oevk_name": "Budapest 14. OEVK",
+    "county": "Budapest",
+    "winner_votes": 25114,
+    "second_votes": 24733,
+    "margin": 381
+  },
+  {
+    "oevk_id": 15,
+    "maz": "01",
+    "evk": "15",
+    "oevk_name": "Budapest 15. OEVK",
+    "county": "Budapest",
+    "winner_votes": 25946,
+    "second_votes": 25166,
+    "margin": 780
+  },
+  {
+    "oevk_id": 16,
+    "maz": "01",
+    "evk": "16",
+    "oevk_name": "Budapest 16. OEVK",
+    "county": "Budapest",
+    "winner_votes": 22856,
+    "second_votes": 20880,
+    "margin": 1976
+  },
+  {
+    "oevk_id": 17,
+    "maz": "01",
+    "evk": "17",
+    "oevk_name": "Budapest 17. OEVK",
+    "county": "Budapest",
+    "winner_votes": 24595,
+    "second_votes": 22055,
+    "margin": 2540
+  },
+  {
+    "oevk_id": 18,
+    "maz": "01",
+    "evk": "18",
+    "oevk_name": "Budapest 18. OEVK",
+    "county": "Budapest",
+    "winner_votes": 28964,
+    "second_votes": 25120,
+    "margin": 3844
+  },
+  {
+    "oevk_id": 19,
+    "maz": "02",
+    "evk": "01",
+    "oevk_name": "Baranya 01. OEVK",
+    "county": "Baranya",
+    "winner_votes": 22710,
+    "second_votes": 21557,
+    "margin": 1153
+  },
+  {
+    "oevk_id": 20,
+    "maz": "02",
+    "evk": "02",
+    "oevk_name": "Baranya 02. OEVK",
+    "county": "Baranya",
+    "winner_votes": 22898,
+    "second_votes": 21226,
+    "margin": 1672
+  },
+  {
+    "oevk_id": 21,
+    "maz": "02",
+    "evk": "03",
+    "oevk_name": "Baranya 03. OEVK",
+    "county": "Baranya",
+    "winner_votes": 28172,
+    "second_votes": 13954,
+    "margin": 14218
+  },
+  {
+    "oevk_id": 22,
+    "maz": "02",
+    "evk": "04",
+    "oevk_name": "Baranya 04. OEVK",
+    "county": "Baranya",
+    "winner_votes": 29403,
+    "second_votes": 13835,
+    "margin": 15568
+  },
+  {
+    "oevk_id": 23,
+    "maz": "03",
+    "evk": "01",
+    "oevk_name": "Bács-Kiskun 01. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 27420,
+    "second_votes": 13464,
+    "margin": 13956
+  },
+  {
+    "oevk_id": 24,
+    "maz": "03",
+    "evk": "02",
+    "oevk_name": "Bács-Kiskun 02. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 26606,
+    "second_votes": 17208,
+    "margin": 9398
+  },
+  {
+    "oevk_id": 25,
+    "maz": "03",
+    "evk": "03",
+    "oevk_name": "Bács-Kiskun 03. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 26592,
+    "second_votes": 13464,
+    "margin": 13128
+  },
+  {
+    "oevk_id": 26,
+    "maz": "03",
+    "evk": "04",
+    "oevk_name": "Bács-Kiskun 04. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 29835,
+    "second_votes": 11727,
+    "margin": 18108
+  },
+  {
+    "oevk_id": 27,
+    "maz": "03",
+    "evk": "05",
+    "oevk_name": "Bács-Kiskun 05. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 25763,
+    "second_votes": 12218,
+    "margin": 13545
+  },
+  {
+    "oevk_id": 28,
+    "maz": "03",
+    "evk": "06",
+    "oevk_name": "Bács-Kiskun 06. OEVK",
+    "county": "Bács-Kiskun",
+    "winner_votes": 23976,
+    "second_votes": 13697,
+    "margin": 10279
+  },
+  {
+    "oevk_id": 29,
+    "maz": "04",
+    "evk": "01",
+    "oevk_name": "Békés 01. OEVK",
+    "county": "Békés",
+    "winner_votes": 22920,
+    "second_votes": 19019,
+    "margin": 3901
+  },
+  {
+    "oevk_id": 30,
+    "maz": "04",
+    "evk": "02",
+    "oevk_name": "Békés 02. OEVK",
+    "county": "Békés",
+    "winner_votes": 25716,
+    "second_votes": 13086,
+    "margin": 12630
+  },
+  {
+    "oevk_id": 31,
+    "maz": "04",
+    "evk": "03",
+    "oevk_name": "Békés 03. OEVK",
+    "county": "Békés",
+    "winner_votes": 24623,
+    "second_votes": 14982,
+    "margin": 9641
+  },
+  {
+    "oevk_id": 32,
+    "maz": "04",
+    "evk": "04",
+    "oevk_name": "Békés 04. OEVK",
+    "county": "Békés",
+    "winner_votes": 22379,
+    "second_votes": 17821,
+    "margin": 4558
+  },
+  {
+    "oevk_id": 33,
+    "maz": "05",
+    "evk": "01",
+    "oevk_name": "Borsod-Abaúj-Zemplén 01. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 22978,
+    "second_votes": 20442,
+    "margin": 2536
+  },
+  {
+    "oevk_id": 34,
+    "maz": "05",
+    "evk": "02",
+    "oevk_name": "Borsod-Abaúj-Zemplén 02. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 20602,
+    "second_votes": 20110,
+    "margin": 492
+  },
+  {
+    "oevk_id": 35,
+    "maz": "05",
+    "evk": "03",
+    "oevk_name": "Borsod-Abaúj-Zemplén 03. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 23686,
+    "second_votes": 10884,
+    "margin": 12802
+  },
+  {
+    "oevk_id": 36,
+    "maz": "05",
+    "evk": "04",
+    "oevk_name": "Borsod-Abaúj-Zemplén 04. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 24636,
+    "second_votes": 15648,
+    "margin": 8988
+  },
+  {
+    "oevk_id": 37,
+    "maz": "05",
+    "evk": "05",
+    "oevk_name": "Borsod-Abaúj-Zemplén 05. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 27335,
+    "second_votes": 13526,
+    "margin": 13809
+  },
+  {
+    "oevk_id": 38,
+    "maz": "05",
+    "evk": "06",
+    "oevk_name": "Borsod-Abaúj-Zemplén 06. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 29737,
+    "second_votes": 18618,
+    "margin": 11119
+  },
+  {
+    "oevk_id": 39,
+    "maz": "05",
+    "evk": "07",
+    "oevk_name": "Borsod-Abaúj-Zemplén 07. OEVK",
+    "county": "Borsod-Abaúj-Zemplén",
+    "winner_votes": 29907,
+    "second_votes": 13343,
+    "margin": 16564
+  },
+  {
+    "oevk_id": 40,
+    "maz": "06",
+    "evk": "01",
+    "oevk_name": "Csongrád-Csanád 01. OEVK",
+    "county": "Csongrád-Csanád",
+    "winner_votes": 27443,
+    "second_votes": 20159,
+    "margin": 7284
+  },
+  {
+    "oevk_id": 41,
+    "maz": "06",
+    "evk": "02",
+    "oevk_name": "Csongrád-Csanád 02. OEVK",
+    "county": "Csongrád-Csanád",
+    "winner_votes": 27516,
+    "second_votes": 24443,
+    "margin": 3073
+  },
+  {
+    "oevk_id": 42,
+    "maz": "06",
+    "evk": "03",
+    "oevk_name": "Csongrád-Csanád 03. OEVK",
+    "county": "Csongrád-Csanád",
+    "winner_votes": 29582,
+    "second_votes": 16947,
+    "margin": 12635
+  },
+  {
+    "oevk_id": 43,
+    "maz": "06",
+    "evk": "04",
+    "oevk_name": "Csongrád-Csanád 04. OEVK",
+    "county": "Csongrád-Csanád",
+    "winner_votes": 28753,
+    "second_votes": 22328,
+    "margin": 6425
+  },
+  {
+    "oevk_id": 44,
+    "maz": "07",
+    "evk": "01",
+    "oevk_name": "Fejér 01. OEVK",
+    "county": "Fejér",
+    "winner_votes": 21546,
+    "second_votes": 18994,
+    "margin": 2552
+  },
+  {
+    "oevk_id": 45,
+    "maz": "07",
+    "evk": "02",
+    "oevk_name": "Fejér 02. OEVK",
+    "county": "Fejér",
+    "winner_votes": 28380,
+    "second_votes": 15219,
+    "margin": 13161
+  },
+  {
+    "oevk_id": 46,
+    "maz": "07",
+    "evk": "03",
+    "oevk_name": "Fejér 03. OEVK",
+    "county": "Fejér",
+    "winner_votes": 32520,
+    "second_votes": 18092,
+    "margin": 14428
+  },
+  {
+    "oevk_id": 47,
+    "maz": "07",
+    "evk": "04",
+    "oevk_name": "Fejér 04. OEVK",
+    "county": "Fejér",
+    "winner_votes": 20562,
+    "second_votes": 19509,
+    "margin": 1053
+  },
+  {
+    "oevk_id": 48,
+    "maz": "07",
+    "evk": "05",
+    "oevk_name": "Fejér 05. OEVK",
+    "county": "Fejér",
+    "winner_votes": 27629,
+    "second_votes": 10441,
+    "margin": 17188
+  },
+  {
+    "oevk_id": 49,
+    "maz": "08",
+    "evk": "01",
+    "oevk_name": "Győr-Moson-Sopron 01. OEVK",
+    "county": "Győr-Moson-Sopron",
+    "winner_votes": 24182,
+    "second_votes": 18356,
+    "margin": 5826
+  },
+  {
+    "oevk_id": 50,
+    "maz": "08",
+    "evk": "02",
+    "oevk_name": "Győr-Moson-Sopron 02. OEVK",
+    "county": "Győr-Moson-Sopron",
+    "winner_votes": 31661,
+    "second_votes": 16517,
+    "margin": 15144
+  },
+  {
+    "oevk_id": 51,
+    "maz": "08",
+    "evk": "03",
+    "oevk_name": "Győr-Moson-Sopron 03. OEVK",
+    "county": "Győr-Moson-Sopron",
+    "winner_votes": 35119,
+    "second_votes": 10592,
+    "margin": 24527
+  },
+  {
+    "oevk_id": 52,
+    "maz": "08",
+    "evk": "04",
+    "oevk_name": "Győr-Moson-Sopron 04. OEVK",
+    "county": "Győr-Moson-Sopron",
+    "winner_votes": 32394,
+    "second_votes": 18786,
+    "margin": 13608
+  },
+  {
+    "oevk_id": 53,
+    "maz": "08",
+    "evk": "05",
+    "oevk_name": "Győr-Moson-Sopron 05. OEVK",
+    "county": "Győr-Moson-Sopron",
+    "winner_votes": 32549,
+    "second_votes": 16746,
+    "margin": 15803
+  },
+  {
+    "oevk_id": 54,
+    "maz": "09",
+    "evk": "01",
+    "oevk_name": "Hajdú-Bihar 01. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 23385,
+    "second_votes": 18994,
+    "margin": 4391
+  },
+  {
+    "oevk_id": 55,
+    "maz": "09",
+    "evk": "02",
+    "oevk_name": "Hajdú-Bihar 02. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 27111,
+    "second_votes": 19560,
+    "margin": 7551
+  },
+  {
+    "oevk_id": 56,
+    "maz": "09",
+    "evk": "03",
+    "oevk_name": "Hajdú-Bihar 03. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 31266,
+    "second_votes": 13627,
+    "margin": 17639
+  },
+  {
+    "oevk_id": 57,
+    "maz": "09",
+    "evk": "04",
+    "oevk_name": "Hajdú-Bihar 04. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 25407,
+    "second_votes": 9483,
+    "margin": 15924
+  },
+  {
+    "oevk_id": 58,
+    "maz": "09",
+    "evk": "05",
+    "oevk_name": "Hajdú-Bihar 05. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 26982,
+    "second_votes": 13529,
+    "margin": 13453
+  },
+  {
+    "oevk_id": 59,
+    "maz": "09",
+    "evk": "06",
+    "oevk_name": "Hajdú-Bihar 06. OEVK",
+    "county": "Hajdú-Bihar",
+    "winner_votes": 26062,
+    "second_votes": 13929,
+    "margin": 12133
+  },
+  {
+    "oevk_id": 60,
+    "maz": "10",
+    "evk": "01",
+    "oevk_name": "Heves 01. OEVK",
+    "county": "Heves",
+    "winner_votes": 29703,
+    "second_votes": 20772,
+    "margin": 8931
+  },
+  {
+    "oevk_id": 61,
+    "maz": "10",
+    "evk": "02",
+    "oevk_name": "Heves 02. OEVK",
+    "county": "Heves",
+    "winner_votes": 28878,
+    "second_votes": 19148,
+    "margin": 9730
+  },
+  {
+    "oevk_id": 62,
+    "maz": "10",
+    "evk": "03",
+    "oevk_name": "Heves 03. OEVK",
+    "county": "Heves",
+    "winner_votes": 30863,
+    "second_votes": 15450,
+    "margin": 15413
+  },
+  {
+    "oevk_id": 63,
+    "maz": "11",
+    "evk": "01",
+    "oevk_name": "Jász-Nagykun-Szolnok 01. OEVK",
+    "county": "Jász-Nagykun-Szolnok",
+    "winner_votes": 24972,
+    "second_votes": 20864,
+    "margin": 4108
+  },
+  {
+    "oevk_id": 64,
+    "maz": "11",
+    "evk": "02",
+    "oevk_name": "Jász-Nagykun-Szolnok 02. OEVK",
+    "county": "Jász-Nagykun-Szolnok",
+    "winner_votes": 28215,
+    "second_votes": 15915,
+    "margin": 12300
+  },
+  {
+    "oevk_id": 65,
+    "maz": "11",
+    "evk": "03",
+    "oevk_name": "Jász-Nagykun-Szolnok 03. OEVK",
+    "county": "Jász-Nagykun-Szolnok",
+    "winner_votes": 29923,
+    "second_votes": 13614,
+    "margin": 16309
+  },
+  {
+    "oevk_id": 66,
+    "maz": "11",
+    "evk": "04",
+    "oevk_name": "Jász-Nagykun-Szolnok 04. OEVK",
+    "county": "Jász-Nagykun-Szolnok",
+    "winner_votes": 23667,
+    "second_votes": 17047,
+    "margin": 6620
+  },
+  {
+    "oevk_id": 67,
+    "maz": "12",
+    "evk": "01",
+    "oevk_name": "Komárom-Esztergom 01. OEVK",
+    "county": "Komárom-Esztergom",
+    "winner_votes": 26240,
+    "second_votes": 22417,
+    "margin": 3823
+  },
+  {
+    "oevk_id": 68,
+    "maz": "12",
+    "evk": "02",
+    "oevk_name": "Komárom-Esztergom 02. OEVK",
+    "county": "Komárom-Esztergom",
+    "winner_votes": 27795,
+    "second_votes": 21587,
+    "margin": 6208
+  },
+  {
+    "oevk_id": 69,
+    "maz": "12",
+    "evk": "03",
+    "oevk_name": "Komárom-Esztergom 03. OEVK",
+    "county": "Komárom-Esztergom",
+    "winner_votes": 30965,
+    "second_votes": 18605,
+    "margin": 12360
+  },
+  {
+    "oevk_id": 70,
+    "maz": "13",
+    "evk": "01",
+    "oevk_name": "Nógrád 01. OEVK",
+    "county": "Nógrád",
+    "winner_votes": 26023,
+    "second_votes": 17467,
+    "margin": 8556
+  },
+  {
+    "oevk_id": 71,
+    "maz": "13",
+    "evk": "02",
+    "oevk_name": "Nógrád 02. OEVK",
+    "county": "Nógrád",
+    "winner_votes": 31921,
+    "second_votes": 12722,
+    "margin": 19199
+  },
+  {
+    "oevk_id": 72,
+    "maz": "14",
+    "evk": "01",
+    "oevk_name": "Pest 01. OEVK",
+    "county": "Pest",
+    "winner_votes": 29597,
+    "second_votes": 28076,
+    "margin": 1521
+  },
+  {
+    "oevk_id": 73,
+    "maz": "14",
+    "evk": "02",
+    "oevk_name": "Pest 02. OEVK",
+    "county": "Pest",
+    "winner_votes": 34810,
+    "second_votes": 33432,
+    "margin": 1378
+  },
+  {
+    "oevk_id": 74,
+    "maz": "14",
+    "evk": "03",
+    "oevk_name": "Pest 03. OEVK",
+    "county": "Pest",
+    "winner_votes": 36877,
+    "second_votes": 26540,
+    "margin": 10337
+  },
+  {
+    "oevk_id": 75,
+    "maz": "14",
+    "evk": "04",
+    "oevk_name": "Pest 04. OEVK",
+    "county": "Pest",
+    "winner_votes": 30747,
+    "second_votes": 18759,
+    "margin": 11988
+  },
+  {
+    "oevk_id": 76,
+    "maz": "14",
+    "evk": "05",
+    "oevk_name": "Pest 05. OEVK",
+    "county": "Pest",
+    "winner_votes": 34390,
+    "second_votes": 31228,
+    "margin": 3162
+  },
+  {
+    "oevk_id": 77,
+    "maz": "14",
+    "evk": "06",
+    "oevk_name": "Pest 06. OEVK",
+    "county": "Pest",
+    "winner_votes": 33188,
+    "second_votes": 25826,
+    "margin": 7362
+  },
+  {
+    "oevk_id": 78,
+    "maz": "14",
+    "evk": "07",
+    "oevk_name": "Pest 07. OEVK",
+    "county": "Pest",
+    "winner_votes": 31623,
+    "second_votes": 23449,
+    "margin": 8174
+  },
+  {
+    "oevk_id": 79,
+    "maz": "14",
+    "evk": "08",
+    "oevk_name": "Pest 08. OEVK",
+    "county": "Pest",
+    "winner_votes": 29584,
+    "second_votes": 27701,
+    "margin": 1883
+  },
+  {
+    "oevk_id": 80,
+    "maz": "14",
+    "evk": "09",
+    "oevk_name": "Pest 09. OEVK",
+    "county": "Pest",
+    "winner_votes": 29632,
+    "second_votes": 14096,
+    "margin": 15536
+  },
+  {
+    "oevk_id": 81,
+    "maz": "14",
+    "evk": "10",
+    "oevk_name": "Pest 10. OEVK",
+    "county": "Pest",
+    "winner_votes": 30973,
+    "second_votes": 14797,
+    "margin": 16176
+  },
+  {
+    "oevk_id": 82,
+    "maz": "14",
+    "evk": "11",
+    "oevk_name": "Pest 11. OEVK",
+    "county": "Pest",
+    "winner_votes": 35513,
+    "second_votes": 19824,
+    "margin": 15689
+  },
+  {
+    "oevk_id": 83,
+    "maz": "14",
+    "evk": "12",
+    "oevk_name": "Pest 12. OEVK",
+    "county": "Pest",
+    "winner_votes": 28244,
+    "second_votes": 13696,
+    "margin": 14548
+  },
+  {
+    "oevk_id": 84,
+    "maz": "15",
+    "evk": "01",
+    "oevk_name": "Somogy 01. OEVK",
+    "county": "Somogy",
+    "winner_votes": 20062,
+    "second_votes": 14670,
+    "margin": 5392
+  },
+  {
+    "oevk_id": 85,
+    "maz": "15",
+    "evk": "02",
+    "oevk_name": "Somogy 02. OEVK",
+    "county": "Somogy",
+    "winner_votes": 21571,
+    "second_votes": 13855,
+    "margin": 7716
+  },
+  {
+    "oevk_id": 86,
+    "maz": "15",
+    "evk": "03",
+    "oevk_name": "Somogy 03. OEVK",
+    "county": "Somogy",
+    "winner_votes": 24171,
+    "second_votes": 14776,
+    "margin": 9395
+  },
+  {
+    "oevk_id": 87,
+    "maz": "15",
+    "evk": "04",
+    "oevk_name": "Somogy 04. OEVK",
+    "county": "Somogy",
+    "winner_votes": 26834,
+    "second_votes": 16010,
+    "margin": 10824
+  },
+  {
+    "oevk_id": 88,
+    "maz": "16",
+    "evk": "01",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 01. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 23254,
+    "second_votes": 21806,
+    "margin": 1448
+  },
+  {
+    "oevk_id": 89,
+    "maz": "16",
+    "evk": "02",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 02. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 26277,
+    "second_votes": 14759,
+    "margin": 11518
+  },
+  {
+    "oevk_id": 90,
+    "maz": "16",
+    "evk": "03",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 03. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 31946,
+    "second_votes": 12781,
+    "margin": 19165
+  },
+  {
+    "oevk_id": 91,
+    "maz": "16",
+    "evk": "04",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 04. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 31523,
+    "second_votes": 11404,
+    "margin": 20119
+  },
+  {
+    "oevk_id": 92,
+    "maz": "16",
+    "evk": "05",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 05. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 29647,
+    "second_votes": 11250,
+    "margin": 18397
+  },
+  {
+    "oevk_id": 93,
+    "maz": "16",
+    "evk": "06",
+    "oevk_name": "Szabolcs-Szatmár-Bereg 06. OEVK",
+    "county": "Szabolcs-Szatmár-Bereg",
+    "winner_votes": 29875,
+    "second_votes": 12027,
+    "margin": 17848
+  },
+  {
+    "oevk_id": 94,
+    "maz": "17",
+    "evk": "01",
+    "oevk_name": "Tolna 01. OEVK",
+    "county": "Tolna",
+    "winner_votes": 22642,
+    "second_votes": 14279,
+    "margin": 8363
+  },
+  {
+    "oevk_id": 95,
+    "maz": "17",
+    "evk": "02",
+    "oevk_name": "Tolna 02. OEVK",
+    "county": "Tolna",
+    "winner_votes": 24362,
+    "second_votes": 10536,
+    "margin": 13826
+  },
+  {
+    "oevk_id": 96,
+    "maz": "17",
+    "evk": "03",
+    "oevk_name": "Tolna 03. OEVK",
+    "county": "Tolna",
+    "winner_votes": 25102,
+    "second_votes": 11107,
+    "margin": 13995
+  },
+  {
+    "oevk_id": 97,
+    "maz": "18",
+    "evk": "01",
+    "oevk_name": "Vas 01. OEVK",
+    "county": "Vas",
+    "winner_votes": 25792,
+    "second_votes": 20771,
+    "margin": 5021
+  },
+  {
+    "oevk_id": 98,
+    "maz": "18",
+    "evk": "02",
+    "oevk_name": "Vas 02. OEVK",
+    "county": "Vas",
+    "winner_votes": 32226,
+    "second_votes": 13026,
+    "margin": 19200
+  },
+  {
+    "oevk_id": 99,
+    "maz": "18",
+    "evk": "03",
+    "oevk_name": "Vas 03. OEVK",
+    "county": "Vas",
+    "winner_votes": 31938,
+    "second_votes": 12874,
+    "margin": 19064
+  },
+  {
+    "oevk_id": 100,
+    "maz": "19",
+    "evk": "01",
+    "oevk_name": "Veszprém 01. OEVK",
+    "county": "Veszprém",
+    "winner_votes": 26119,
+    "second_votes": 20301,
+    "margin": 5818
+  },
+  {
+    "oevk_id": 101,
+    "maz": "19",
+    "evk": "02",
+    "oevk_name": "Veszprém 02. OEVK",
+    "county": "Veszprém",
+    "winner_votes": 26762,
+    "second_votes": 19172,
+    "margin": 7590
+  },
+  {
+    "oevk_id": 102,
+    "maz": "19",
+    "evk": "03",
+    "oevk_name": "Veszprém 03. OEVK",
+    "county": "Veszprém",
+    "winner_votes": 23685,
+    "second_votes": 20797,
+    "margin": 2888
+  },
+  {
+    "oevk_id": 103,
+    "maz": "19",
+    "evk": "04",
+    "oevk_name": "Veszprém 04. OEVK",
+    "county": "Veszprém",
+    "winner_votes": 29806,
+    "second_votes": 13826,
+    "margin": 15980
+  },
+  {
+    "oevk_id": 104,
+    "maz": "20",
+    "evk": "01",
+    "oevk_name": "Zala 01. OEVK",
+    "county": "Zala",
+    "winner_votes": 31178,
+    "second_votes": 16987,
+    "margin": 14191
+  },
+  {
+    "oevk_id": 105,
+    "maz": "20",
+    "evk": "02",
+    "oevk_name": "Zala 02. OEVK",
+    "county": "Zala",
+    "winner_votes": 30734,
+    "second_votes": 15467,
+    "margin": 15267
+  },
+  {
+    "oevk_id": 106,
+    "maz": "20",
+    "evk": "03",
+    "oevk_name": "Zala 03. OEVK",
+    "county": "Zala",
+    "winner_votes": 26126,
+    "second_votes": 18466,
+    "margin": 7660
+  }
+]
