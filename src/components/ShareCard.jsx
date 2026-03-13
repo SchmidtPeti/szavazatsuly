@@ -1,80 +1,141 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { toPng } from 'html-to-image'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Share2, Copy, Check } from 'lucide-react'
+import { Download, Share2, Loader2 } from 'lucide-react'
 
 export default function ShareCard({ oevk, mobilizCount }) {
-  const [copied, setCopied] = useState(false)
+  const cardRef = useRef(null)
+  const [loading, setLoading] = useState(false)
 
-  const chainRound2 = mobilizCount * mobilizCount
-  const text = `Elviszek ${mobilizCount} embert szavazni április 6-án. Ha ők is ugyanennyit hoznak, az már ${chainRound2} szavazat — ilyen a lánc. 🔗\n\nA körzetemben (${oevk.oevk_name}) 2022-ben ${oevk.margin.toLocaleString('hu-HU')} szavazat volt a különbség. Te hányat hozol?\n\nTeszteld a körzetedet: https://szavazatsuly.hu`
+  const margin = oevk.margin
+  const needCount = Math.ceil(margin / mobilizCount)
+  const nonVoters = oevk.non_voters
+  const everyN = nonVoters ? Math.floor(nonVoters / margin) : null
+
+  async function generatePng() {
+    setLoading(true)
+    const dataUrl = await toPng(cardRef.current, { pixelRatio: 2 })
+    setLoading(false)
+    return dataUrl
+  }
+
+  async function handleDownload() {
+    const dataUrl = await generatePng()
+    const a = document.createElement('a')
+    a.href = dataUrl
+    a.download = 'szavazatom-dont.png'
+    a.click()
+  }
 
   async function handleShare() {
-    if (navigator.share) {
+    const dataUrl = await generatePng()
+    const blob = await (await fetch(dataUrl)).blob()
+    const file = new File([blob], 'szavazatom-dont.png', { type: 'image/png' })
+    if (navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({
-          title: 'SzavazatSúly – Az én szavazatom dönthet',
-          text,
-        })
+        await navigator.share({ files: [file], title: 'A szavazatom dönthet.' })
       } catch {
         // user cancelled
       }
     } else {
-      handleCopy()
-    }
-  }
-
-  async function handleCopy() {
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
-    } catch {
-      // fallback
+      const a = document.createElement('a')
+      a.href = dataUrl
+      a.download = 'szavazatom-dont.png'
+      a.click()
     }
   }
 
   return (
     <div className="space-y-4">
-      <h3 className="font-semibold text-lg text-center">Tedd meg a vállalást!</h3>
+      <h3 className="font-semibold text-lg text-center">A te vállalásod</h3>
 
-      <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
-        <CardContent className="pt-5 pb-4 space-y-3">
-          <div className="text-center space-y-1">
-            <div className="text-3xl font-black text-primary">
-              {mobilizCount} ember
-            </div>
-            <div className="text-sm text-muted-foreground">
-              vállalom, hogy elviszem szavazni
-            </div>
+      {/* Shareable card – captured as PNG */}
+      <div
+        ref={cardRef}
+        style={{
+          width: 360,
+          height: 360,
+          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+          borderRadius: 16,
+          padding: 28,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
+          color: '#ffffff',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Top */}
+        <div>
+          <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: '#94a3b8', marginBottom: 4 }}>
+            A szavazatom dönthet.
           </div>
-          <div className="text-xs text-muted-foreground text-center italic px-4">
-            "{oevk.oevk_name}: csak {oevk.margin.toLocaleString('hu-HU')} szavazat volt a különbség."
+          <div style={{ fontSize: 13, color: '#cbd5e1' }}>
+            {oevk.oevk_name}
           </div>
-        </CardContent>
-      </Card>
+        </div>
 
+        {/* Main commitment */}
+        <div style={{
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: 12,
+          padding: '14px 18px',
+          textAlign: 'center',
+          border: '1px solid rgba(255,255,255,0.15)',
+        }}>
+          <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 4 }}>Én vállalom:</div>
+          <div style={{ fontSize: 52, fontWeight: 900, lineHeight: 1, color: '#60a5fa' }}>
+            {mobilizCount}
+          </div>
+          <div style={{ fontSize: 15, fontWeight: 600, color: '#e2e8f0', marginTop: 4 }}>
+            embert viszek szavazni
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+          <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
+            <span style={{ color: '#94a3b8' }}>2022-es különbség: </span>
+            <strong style={{ color: '#f1f5f9' }}>{margin.toLocaleString('hu-HU')} szavazat</strong>
+          </div>
+          <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
+            Ha <strong style={{ color: '#34d399' }}>{needCount.toLocaleString('hu-HU')} ember</strong> teszi ugyanezt
+            {' '}→ <strong style={{ color: '#34d399' }}>a körzet behozható 🎯</strong>
+          </div>
+          {everyN && everyN >= 2 && (
+            <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
+              Legutóbb <strong style={{ color: '#fb923c' }}>{nonVoters.toLocaleString('hu-HU')} ember</strong> maradt otthon
+              {' '}→ minden <strong style={{ color: '#fb923c' }}>{everyN}. otthon maradónak</strong> kellene elmennie ⏰
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div style={{ fontSize: 11, color: '#475569', textAlign: 'right' }}>
+          szavazatsuly.hu
+        </div>
+      </div>
+
+      {/* Action buttons */}
       <div className="space-y-2">
-        <Button onClick={handleShare} className="w-full h-12 gap-2" size="lg">
-          <Share2 className="w-5 h-5" />
-          Megosztom a vállalást
+        <Button
+          onClick={handleShare}
+          className="w-full h-12 gap-2"
+          size="lg"
+          disabled={loading}
+        >
+          {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Share2 className="w-5 h-5" />}
+          Megosztom
         </Button>
         <Button
-          onClick={handleCopy}
+          onClick={handleDownload}
           variant="outline"
           className="w-full h-11 gap-2"
+          disabled={loading}
         >
-          {copied ? (
-            <>
-              <Check className="w-4 h-4 text-green-600" />
-              <span className="text-green-600">Másolva!</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-4 h-4" />
-              Szöveg másolása
-            </>
-          )}
+          <Download className="w-4 h-4" />
+          Mentés képként
         </Button>
       </div>
 

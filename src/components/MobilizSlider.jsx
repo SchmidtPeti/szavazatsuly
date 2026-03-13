@@ -3,8 +3,6 @@ import { Slider } from '@/components/ui/slider'
 import { Card, CardContent } from '@/components/ui/card'
 import { Users2, Link2, Target } from 'lucide-react'
 
-const MANDATE_THRESHOLD = 55000
-
 export default function MobilizSlider({ oevk, onValueChange }) {
   const [count, setCount] = useState(3)
 
@@ -17,22 +15,41 @@ export default function MobilizSlider({ oevk, onValueChange }) {
 
   // Lánc hatás: te hozol count-ot, ők is hoznak count-ot
   const chainRound2 = count * count
+  const chainPct = Math.min(100, Math.round((chainRound2 / margin) * 100))
+  const chainColor = chainPct >= 100
+    ? 'text-green-600'
+    : chainPct >= 80
+    ? 'text-yellow-500'
+    : chainPct >= 50
+    ? 'text-orange-500'
+    : 'text-red-500'
 
   // Hány ilyen ember kellene a különbség behozásához?
   const needCount = Math.ceil(margin / count)
 
-  // Card 2: hány mobilizáló kell 1 mandátumhoz
-  const mobilizersNeeded = Math.ceil(MANDATE_THRESHOLD / count)
-
-  // Card 1: "csendes tömeg" – csak ha van adat
+  // Kanapén maradók: minden hányadiknak kell elmenni a váltáshoz
   const nonVoters = oevk.non_voters
-  const tenPct = nonVoters ? Math.round(nonVoters * 0.1) : null
-  const ratio = tenPct ? (tenPct / margin).toFixed(1) : null
+  const everyN = nonVoters ? Math.floor(nonVoters / margin) : null
+
+  // Szorzódó hatás: hány kör kell, ha mindenki toboroz
+  const compoundRounds = (() => {
+    if (count <= 1) return null
+    const rounds = []
+    let total = 0
+    let power = 1
+    while (total < margin && rounds.length < 10) {
+      power *= count
+      total += power
+      rounds.push({ n: rounds.length + 1, added: power, total })
+      if (total >= margin) break
+    }
+    return total >= margin ? rounds : null
+  })()
 
   const impact = count <= 2
     ? 'Már ez is számít — indulj el ebből!'
     : count <= 5
-    ? 'Egy baráti kör — ez már érezhető!'
+    ? 'Egy kis csoport — ez már érezhető!'
     : count <= 8
     ? 'Komolyabb mozgás indul el tőled!'
     : '🚀 Egy egész közösséget mozgatsz meg!'
@@ -41,7 +58,7 @@ export default function MobilizSlider({ oevk, onValueChange }) {
     <div className="space-y-4">
       <h3 className="font-semibold text-lg text-center">Hány embert viszél szavazni?</h3>
       <p className="text-muted-foreground text-sm text-center">
-        Húzd el a csúszkát — hány barátodat tudnád rávenni?
+        Húzd el a csúszkát — hány embert tudnál rávenni?
       </p>
 
       <Card>
@@ -58,7 +75,7 @@ export default function MobilizSlider({ oevk, onValueChange }) {
 
           <Slider
             min={1}
-            max={20}
+            max={30}
             step={1}
             value={[count]}
             onValueChange={handleChange}
@@ -67,62 +84,67 @@ export default function MobilizSlider({ oevk, onValueChange }) {
 
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>1 fő</span>
-            <span>20 fő</span>
+            <span>30 fő</span>
           </div>
 
           {/* 3 metrika */}
           <div className="space-y-3">
 
-            {/* A) Lánc hatás */}
+            {/* A) Kollektív cél */}
+            <Card className="bg-muted/50 border-0">
+              <CardContent className="py-3 px-4 flex items-center gap-3">
+                <Target className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <p className="text-sm">
+                  Ha te hozol <strong className="text-foreground">{count} embert</strong>, és ugyanezt
+                  teszi <strong className="text-foreground">{needCount.toLocaleString('hu-HU')} ember</strong> — a körzet behozható.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* B) Csendes tömeg matekja – érdekesség */}
+            {nonVoters && everyN && everyN >= 2 && (
+              <Card className="bg-orange-50 border-orange-200">
+                <CardContent className="py-3 px-4">
+                  <p className="text-xs font-semibold text-orange-700 uppercase tracking-wide mb-2">⏰ AZ OTTHON MARADÓK DÖNTHETNEK</p>
+                  <p className="text-sm leading-relaxed text-orange-900">
+                    Legutóbb <strong>{nonVoters.toLocaleString('hu-HU')} ember</strong> nem ment el szavazni ebben a körzetben.
+                    A körzetváltáshoz minden <strong>{everyN}. otthon maradónak</strong> kellene elmennie.
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* C) Lánc hatás */}
             <Card className="bg-primary/5 border-primary/20">
               <CardContent className="py-3 px-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Link2 className="w-4 h-4 text-primary" />
                   <span className="text-xs font-semibold text-primary uppercase tracking-wide">Lánc hatás</span>
                 </div>
-                <p className="text-sm leading-relaxed">
-                  Te hozol <strong>{count} barátot</strong>. Ha ők is hoznak
-                  {' '}<strong>{count}-{count}et</strong> — az összesen{' '}
-                  <strong className="text-primary text-base">{chainRound2.toLocaleString('hu-HU')} új szavazat</strong>! 🔗
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* B) Kollektív cél */}
-            <Card className="bg-muted/50 border-0">
-              <CardContent className="py-3 px-4 flex items-center gap-3">
-                <Target className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <p className="text-sm">
-                  Ha <strong className="text-foreground">{needCount.toLocaleString('hu-HU')} ember</strong> teszi
-                  ugyanezt, a körzeti különbség behozható.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* C) Csendes tömeg matekja */}
-            {tenPct && ratio && (
-              <Card className="bg-orange-50 border-orange-200">
-                <CardContent className="py-3 px-4">
-                  <p className="text-xs font-semibold text-orange-700 uppercase tracking-wide mb-2">⏰ A kanapén maradók dönthetnek</p>
-                  <p className="text-sm leading-relaxed text-orange-900">
-                    Legutóbb <strong>{nonVoters.toLocaleString('hu-HU')} ember</strong> nem ment el szavazni ebben a körzetben.
-                    Ha csak minden tizedikük elmegy → <strong>{tenPct.toLocaleString('hu-HU')} új voks</strong>.
-                    Ez <strong>{ratio}×-a</strong> a legutóbbi {margin.toLocaleString('hu-HU')} szavazatos különbségnek!
+                {compoundRounds ? (() => {
+                  const total = compoundRounds[compoundRounds.length - 1].total
+                  const rounds = compoundRounds.length
+                  return (
+                    <p className="text-sm leading-relaxed">
+                      Te hozol <strong>{count} embert</strong>.
+                      {' '}Ha ők is hoznak <strong>{count} embert</strong>
+                      {rounds >= 2 && <>, és az ő embereik is hoznak <strong>{count} embert</strong></>}
+                      {rounds >= 3 && Array.from({ length: rounds - 2 }).map((_, i) => (
+                        <span key={i}>, és azok is hoznak <strong>{count} embert</strong></span>
+                      ))}
+                      {' '}→ azaz{' '}
+                      <strong className="text-primary">{rounds} kör után</strong>{' '}
+                      <strong className={`tabular-nums transition-colors duration-300 ${chainColor}`}>
+                        {total.toLocaleString('hu-HU')} szavazat
+                      </strong>
+                      , ami szintén elég a különbséghez. 🔗
+                    </p>
+                  )
+                })() : (
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Hozz legalább 2 embert a lánc hatáshoz!
                   </p>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* D) Országos mentőöv */}
-            <Card className="bg-blue-50 border-blue-200">
-              <CardContent className="py-3 px-4">
-                <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-2">⚖️ Mi van, ha nem szoros a körzeted?</p>
-                <p className="text-sm leading-relaxed text-blue-900">
-                  ~55 000 töredékszavazat = 1 új parlamenti képviselő.
-                  Ha <strong>{mobilizersNeeded.toLocaleString('hu-HU')} ember</strong> teszi ugyanezt, amit te ({count} főt hoz),
-                  azzal összesen <strong>1 teljesen új képviselő</strong> kerül be a Parlamentbe!
-                  Nincs elveszett szavazat.
-                </p>
+                )}
               </CardContent>
             </Card>
 
