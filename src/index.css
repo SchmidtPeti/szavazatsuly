@@ -141,6 +141,40 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
+/* ─── ShareCard desktop layout ───────────────────────────────────────────── */
+.share-page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.share-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 840px) {
+  .share-page {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem 4rem;
+  }
+
+  .share-page-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .share-cols {
+    flex-direction: row;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+
+  .share-col {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 @keyframes dotFadeIn {
   from {
     opacity: 0;

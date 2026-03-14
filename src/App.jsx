@@ -87,7 +87,7 @@ export default function App() {
       )}
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: step === 'input' ? '100%' : 448 }}>
+        <div style={{ width: '100%', maxWidth: (step === 'input' || step === 'share') ? 'none' : 448 }}>
           {step === 'input' && (
             <ZipInput
               onSearch={handleSearch}
@@ -122,9 +122,7 @@ export default function App() {
           )}
 
           {step === 'share' && oevk && (
-            <div style={{ padding: '1.5rem 1.5rem' }}>
-              <ShareCard oevk={oevk} mobilizCount={mobilizCount} />
-            </div>
+            <ShareCard oevk={oevk} mobilizCount={mobilizCount} />
           )}
         </div>
       </div>
