@@ -1,8 +1,7 @@
-import { DotRatio } from './DotDisplay'
-
 export default function ResultCard({ oevk }) {
   const {
     oevk_name,
+    area_name,
     county,
     margin,
     winner_votes,
@@ -14,8 +13,6 @@ export default function ResultCard({ oevk }) {
 
   const isTight = margin < 1000
   const isModerate = margin < 3000
-  const totalRef = Math.max(winner_votes, second_votes)
-  const dotsLit = Math.max(1, Math.min(29, Math.round((margin / totalRef) * 30)))
   const accentColor = isTight ? 'var(--ember)' : isModerate ? 'var(--amber)' : 'var(--ink)'
 
   return (
@@ -52,7 +49,7 @@ export default function ResultCard({ oevk }) {
             lineHeight: 1.1,
           }}
         >
-          {oevk_name}
+          {area_name || oevk_name}
         </h2>
       </div>
 
@@ -146,20 +143,14 @@ export default function ResultCard({ oevk }) {
       </div>
 
       <Panel>
-        <SectionLabel>Arányban</SectionLabel>
-        <DotRatio lit={dotsLit} total={30} dotSize={11} />
-        <p
-          style={{
-            fontFamily: 'Crimson Pro, Georgia, serif',
-            fontSize: '0.88rem',
-            fontStyle: 'italic',
-            color: 'var(--warm-gray)',
-            margin: '8px 0 0',
-            lineHeight: 1.45,
-          }}
-        >
-          A bevilágított pöttyök a különbséget mutatják a leadott szavazatokhoz képest.
-        </p>
+        <SectionLabel>A szavazatok megoszlása</SectionLabel>
+        <VoteBar
+          winnerVotes={winner_votes}
+          secondVotes={second_votes}
+          winnerParty={winner_party}
+          secondParty={second_party}
+          margin={margin}
+        />
       </Panel>
 
       <Panel>
@@ -219,6 +210,52 @@ function SectionLabel({ children }) {
     >
       {children}
     </p>
+  )
+}
+
+function VoteBar({ winnerVotes, secondVotes, winnerParty, secondParty, margin }) {
+  const total = winnerVotes + secondVotes
+  const winnerPct = ((winnerVotes / total) * 100).toFixed(1)
+  const secondPct = ((secondVotes / total) * 100).toFixed(1)
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5, alignItems: 'baseline' }}>
+          <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ember-deep)' }}>
+            1. {winnerParty}
+          </span>
+          <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.88rem', fontWeight: 700, color: 'var(--ember-deep)' }}>
+            {winnerPct}%
+          </span>
+        </div>
+        <div style={{ height: 11, borderRadius: 6, background: 'var(--paper-strong)', overflow: 'hidden' }}>
+          <div style={{ width: `${winnerPct}%`, height: '100%', background: 'linear-gradient(to right, var(--ember), var(--ember-deep))', borderRadius: 6 }} />
+        </div>
+      </div>
+
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5, alignItems: 'baseline' }}>
+          <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink)' }}>
+            2. {secondParty}
+          </span>
+          <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.88rem', fontWeight: 700, color: 'var(--ink)' }}>
+            {secondPct}%
+          </span>
+        </div>
+        <div style={{ height: 11, borderRadius: 6, background: 'var(--paper-strong)', overflow: 'hidden' }}>
+          <div style={{ width: `${secondPct}%`, height: '100%', background: 'var(--ink)', borderRadius: 6, opacity: 0.55 }} />
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 2 }}>
+        <div style={{ flex: 1, height: 1, background: 'var(--surface-border)' }} />
+        <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.8rem', fontWeight: 700, color: 'var(--ember-deep)', letterSpacing: '0.06em', whiteSpace: 'nowrap' }}>
+          {margin.toLocaleString('hu-HU')} szavazat különbség
+        </span>
+        <div style={{ flex: 1, height: 1, background: 'var(--surface-border)' }} />
+      </div>
+    </div>
   )
 }
 

@@ -109,6 +109,38 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 10px 24px rgba(227, 90, 43, 0.24);
 }
 
+/* ─── ZipInput desktop layout ────────────────────────────────────────────── */
+.zip-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.zip-form-wrapper {
+  width: 100%;
+}
+
+@media (min-width: 840px) {
+  .zip-layout {
+    flex-direction: row;
+    max-width: 880px;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .zip-hero {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .zip-form-wrapper {
+    width: 380px;
+    flex-shrink: 0;
+  }
+}
+
 @keyframes dotFadeIn {
   from {
     opacity: 0;

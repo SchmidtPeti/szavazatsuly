@@ -87,7 +87,7 @@ export default function App() {
       )}
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: 448 }}>
+        <div style={{ width: '100%', maxWidth: step === 'input' ? '100%' : 448 }}>
           {step === 'input' && (
             <ZipInput
               onSearch={handleSearch}

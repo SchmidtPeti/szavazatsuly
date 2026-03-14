@@ -126,6 +126,10 @@ export default function MobilizSlider({ oevk, onValueChange }) {
           </span>
         </div>
 
+        <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--amber)', margin: '0 0 4px', textTransform: 'uppercase' }}>
+          te + {count} = összesen {count + 1} fő
+        </p>
+
         <PersonalDots count={count} />
 
         <div style={{ width: '100%', paddingTop: '0.25rem' }}>
@@ -181,10 +185,10 @@ export default function MobilizSlider({ oevk, onValueChange }) {
             >
               {everyN}.
             </strong>
-            {' '}otthon maradónak kellene elmennie.
+            {' '}otthon maradónak kellene elmennie
           </p>
           <DotRatio lit={1} total={Math.min(everyN, 30)} dotSize={10} />
-          <p style={microCopyStyle}>Minden {everyN} pöttyből 1 számít.</p>
+          <p style={microCopyStyle}> és a különbség behozható lenne.</p>
         </Panel>
       )}
 

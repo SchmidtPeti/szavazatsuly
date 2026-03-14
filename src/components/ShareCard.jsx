@@ -3,7 +3,9 @@ import { toPng } from 'html-to-image'
 
 export default function ShareCard({ oevk, mobilizCount }) {
   const cardRef = useRef(null)
-  const [loading, setLoading] = useState(false)
+  const flyerRef = useRef(null)
+  const [loadingShare, setLoadingShare] = useState(false)
+  const [loadingFlyer, setLoadingFlyer] = useState(false)
 
   const margin = oevk.margin
   const needCount = Math.ceil(margin / mobilizCount)
@@ -11,24 +13,17 @@ export default function ShareCard({ oevk, mobilizCount }) {
   const everyN = nonVoters ? Math.floor(nonVoters / margin) : null
   const dotCount = Math.min(mobilizCount, 19)
   const showMore = mobilizCount > 19
+  const displayName = oevk.area_name || oevk.oevk_name
 
-  async function generatePng() {
-    setLoading(true)
-    const dataUrl = await toPng(cardRef.current, { pixelRatio: 2 })
-    setLoading(false)
+  async function generatePng(ref, pixelRatio = 2) {
+    const dataUrl = await toPng(ref.current, { pixelRatio })
     return dataUrl
   }
 
-  async function handleDownload() {
-    const dataUrl = await generatePng()
-    const a = document.createElement('a')
-    a.href = dataUrl
-    a.download = 'szavazatom-dont.png'
-    a.click()
-  }
-
   async function handleShare() {
-    const dataUrl = await generatePng()
+    setLoadingShare(true)
+    const dataUrl = await generatePng(cardRef)
+    setLoadingShare(false)
     const blob = await (await fetch(dataUrl)).blob()
     const file = new File([blob], 'szavazatom-dont.png', { type: 'image/png' })
     if (navigator.canShare?.({ files: [file] })) {
@@ -45,6 +40,26 @@ export default function ShareCard({ oevk, mobilizCount }) {
     }
   }
 
+  async function handleDownload() {
+    setLoadingShare(true)
+    const dataUrl = await generatePng(cardRef)
+    setLoadingShare(false)
+    const a = document.createElement('a')
+    a.href = dataUrl
+    a.download = 'szavazatom-dont.png'
+    a.click()
+  }
+
+  async function handleFlyerDownload() {
+    setLoadingFlyer(true)
+    const dataUrl = await generatePng(flyerRef, 2)
+    setLoadingFlyer(false)
+    const a = document.createElement('a')
+    a.href = dataUrl
+    a.download = 'korzetunk-otthon-maradoi.png'
+    a.click()
+  }
+
   return (
     <div
       style={{
@@ -54,6 +69,7 @@ export default function ShareCard({ oevk, mobilizCount }) {
         padding: '0.5rem 0 2rem',
       }}
     >
+      {/* ── Social card section ── */}
       <div>
         <h3
           style={{
@@ -80,6 +96,7 @@ export default function ShareCard({ oevk, mobilizCount }) {
         </p>
       </div>
 
+      {/* Social card */}
       <div
         ref={cardRef}
         style={{
@@ -215,7 +232,7 @@ export default function ShareCard({ oevk, mobilizCount }) {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, position: 'relative' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5, position: 'relative' }}>
           <div
             style={{
               fontFamily: 'Barlow Condensed, sans-serif',
@@ -225,35 +242,36 @@ export default function ShareCard({ oevk, mobilizCount }) {
               color: '#8d7763',
             }}
           >
-            {oevk.oevk_name}
+            {displayName}
           </div>
           <div style={shareStatStyle}>
             <span style={shareLabelStyle}>Különbség 2022-ben: </span>
             <strong style={{ color: '#d85026' }}>{margin.toLocaleString('hu-HU')} szavazat</strong>
           </div>
           <div style={shareStatStyle}>
-            <span style={shareLabelStyle}>Ilyen csoportra lenne szükség: </span>
-            <strong style={{ color: '#94680f' }}>{needCount.toLocaleString('hu-HU')}</strong>
+            <span style={shareLabelStyle}>Ilyen csoport kell: </span>
+            <strong style={{ color: '#94680f' }}>{needCount.toLocaleString('hu-HU')} ember</strong>
           </div>
           {everyN && everyN >= 2 && (
             <div style={shareStatStyle}>
               <span style={shareLabelStyle}>Minden </span>
               <strong style={{ color: '#94680f' }}>{everyN}.</strong>
-              <span style={shareLabelStyle}> otthon maradó számít</span>
+              <span style={shareLabelStyle}> otthon maradónak kell elmennie</span>
             </div>
           )}
         </div>
       </div>
 
+      {/* Share buttons */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <button
           onClick={handleShare}
-          disabled={loading}
+          disabled={loadingShare}
           style={{
-            background: loading
+            background: loadingShare
               ? 'linear-gradient(180deg, #efe5d7 0%, #ead9c5 100%)'
               : 'linear-gradient(180deg, var(--ember) 0%, var(--ember-deep) 100%)',
-            color: loading ? 'var(--warm-gray)' : 'var(--cream)',
+            color: loadingShare ? 'var(--warm-gray)' : 'var(--cream)',
             border: '1px solid rgba(190, 66, 25, 0.28)',
             fontFamily: 'Barlow Condensed, sans-serif',
             fontSize: '1rem',
@@ -262,17 +280,17 @@ export default function ShareCard({ oevk, mobilizCount }) {
             textTransform: 'uppercase',
             padding: '1rem',
             borderRadius: 999,
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: loadingShare ? 'not-allowed' : 'pointer',
             width: '100%',
             transition: 'box-shadow 0.2s ease, transform 0.2s ease',
-            boxShadow: loading ? 'none' : '0 18px 36px rgba(227,90,43,0.18)',
+            boxShadow: loadingShare ? 'none' : '0 18px 36px rgba(227,90,43,0.18)',
           }}
         >
-          {loading ? 'Feldolgozás...' : 'Megosztom'}
+          {loadingShare ? 'Feldolgozás...' : 'Megosztom'}
         </button>
         <button
           onClick={handleDownload}
-          disabled={loading}
+          disabled={loadingShare}
           style={{
             background: 'rgba(252,248,241,0.75)',
             color: 'var(--ink)',
@@ -284,13 +302,154 @@ export default function ShareCard({ oevk, mobilizCount }) {
             textTransform: 'uppercase',
             padding: '0.85rem',
             borderRadius: 999,
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: loadingShare ? 'not-allowed' : 'pointer',
             width: '100%',
           }}
         >
           Mentés képként
         </button>
       </div>
+
+      {/* ── Divider ── */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '0.5rem 0' }}>
+        <div style={{ flex: 1, height: 1, background: 'var(--surface-border)' }} />
+        <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--warm-gray)' }}>
+          Körzeted otthon maradóinak
+        </span>
+        <div style={{ flex: 1, height: 1, background: 'var(--surface-border)' }} />
+      </div>
+
+      {/* ── A4 Flyer section ── */}
+      <div>
+        <h3
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontWeight: 800,
+            fontSize: '1.4rem',
+            color: 'var(--ink)',
+            margin: '0 0 4px',
+            lineHeight: 1.1,
+          }}
+        >
+          Felhívó a szomszédaidnak
+        </h3>
+        <p
+          style={{
+            fontFamily: 'Crimson Pro, Georgia, serif',
+            fontSize: '0.95rem',
+            fontStyle: 'italic',
+            color: 'var(--warm-gray)',
+            margin: 0,
+          }}
+        >
+          Nyomtasd ki vagy küldd el azoknak, akik otthon maradnak.
+        </p>
+      </div>
+
+      {/* A4 Flyer card */}
+      <div
+        ref={flyerRef}
+        style={{
+          width: 360,
+          height: 509,
+          background: 'linear-gradient(165deg, #2a1a0e 0%, #3d2614 45%, #1e1108 100%)',
+          borderRadius: 20,
+          padding: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          boxSizing: 'border-box',
+          position: 'relative',
+          overflow: 'hidden',
+          alignSelf: 'center',
+          border: '1px solid rgba(227,90,43,0.25)',
+          boxShadow: '0 28px 60px rgba(89, 53, 24, 0.2)',
+        }}
+      >
+        {/* Background glow */}
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 85% 15%, rgba(227,90,43,0.2), transparent 40%), radial-gradient(circle at 10% 85%, rgba(215,156,28,0.1), transparent 35%)', pointerEvents: 'none' }} />
+
+        {/* Logo */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, position: 'relative' }}>
+          <svg width="18" height="10" viewBox="0 0 18 10">
+            <circle cx="4" cy="5" r="4" fill="#E35A2B" />
+            <circle cx="11" cy="5" r="3" fill="#D79C1C" opacity="0.9" />
+            <circle cx="16" cy="5" r="2" fill="#E35A2B" opacity="0.35" />
+          </svg>
+          <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
+            SzavazatSúly
+          </span>
+        </div>
+
+        {/* Headline */}
+        <div style={{ position: 'relative' }}>
+          <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(227,90,43,0.85)', margin: '0 0 6px' }}>
+            {displayName}
+          </p>
+          <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 900, fontSize: 'clamp(3rem, 16vw, 3.8rem)', lineHeight: 1, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.92)', textTransform: 'uppercase' }}>
+            {nonVoters.toLocaleString('hu-HU')}
+          </div>
+          <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.6)', margin: '4px 0 0' }}>
+            ember nem szavazott 2022-ben
+          </p>
+        </div>
+
+        {/* Key message */}
+        {everyN && everyN >= 2 ? (
+          <div style={{ background: 'rgba(227,90,43,0.14)', borderRadius: 14, padding: '1rem 1.1rem', border: '1px solid rgba(227,90,43,0.28)', position: 'relative' }}>
+            <p style={{ fontFamily: 'Crimson Pro, Georgia, serif', fontStyle: 'italic', fontSize: '1.08rem', lineHeight: 1.5, color: 'rgba(255,255,255,0.85)', margin: 0 }}>
+              Ha minden{' '}
+              <strong style={{ fontStyle: 'normal', color: '#E35A2B' }}>{everyN}.</strong>
+              {' '}otthon maradó elmegy szavazni, a{' '}
+              <strong style={{ fontStyle: 'normal', color: '#E35A2B' }}>{margin.toLocaleString('hu-HU')} szavazatos</strong>
+              {' '}különbség behozható.
+            </p>
+          </div>
+        ) : (
+          <div style={{ background: 'rgba(227,90,43,0.14)', borderRadius: 14, padding: '1rem 1.1rem', border: '1px solid rgba(227,90,43,0.28)', position: 'relative' }}>
+            <p style={{ fontFamily: 'Crimson Pro, Georgia, serif', fontStyle: 'italic', fontSize: '1.08rem', lineHeight: 1.5, color: 'rgba(255,255,255,0.85)', margin: 0 }}>
+              A körzetedben{' '}
+              <strong style={{ fontStyle: 'normal', color: '#E35A2B' }}>{margin.toLocaleString('hu-HU')} szavazat</strong>
+              {' '}volt a különbség. A te szavazatod is számít.
+            </p>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div style={{ position: 'relative' }}>
+          <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 900, fontSize: '2rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#E35A2B', margin: '0 0 2px', lineHeight: 1 }}>
+            Menj el szavazni!
+          </p>
+          <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
+            szavazatsuly.hu
+          </p>
+        </div>
+      </div>
+
+      {/* Flyer download button */}
+      <button
+        onClick={handleFlyerDownload}
+        disabled={loadingFlyer}
+        style={{
+          background: loadingFlyer
+            ? 'rgba(252,248,241,0.5)'
+            : 'rgba(42,26,14,0.88)',
+          color: loadingFlyer ? 'var(--warm-gray)' : 'rgba(255,255,255,0.85)',
+          border: '1px solid rgba(227,90,43,0.3)',
+          fontFamily: 'Barlow Condensed, sans-serif',
+          fontSize: '0.95rem',
+          fontWeight: 700,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          padding: '0.9rem',
+          borderRadius: 999,
+          cursor: loadingFlyer ? 'not-allowed' : 'pointer',
+          width: '100%',
+          transition: 'opacity 0.2s ease',
+        }}
+      >
+        {loadingFlyer ? 'Feldolgozás...' : 'Felhívó letöltése (PNG)'}
+      </button>
 
       <p
         style={{
