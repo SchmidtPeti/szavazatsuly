@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { PersonalDots, DotRatio, DotTree } from './DotDisplay'
 
+const MAX_SLIDER_COUNT = 15
+
 export default function MobilizSlider({ oevk, onValueChange }) {
   const [count, setCount] = useState(3)
 
@@ -33,7 +35,7 @@ export default function MobilizSlider({ oevk, onValueChange }) {
     count <= 5 ? 'Egy kis csoport, ez már érezhető.' :
     count <= 8 ? 'Komolyabb mozgás indul el tőled.' :
     'Egy egész közösséget mozgatsz meg.'
-  const fillPct = ((count - 1) / 29) * 100
+  const fillPct = ((count - 1) / (MAX_SLIDER_COUNT - 1)) * 100
 
   return (
     <div
@@ -136,7 +138,7 @@ export default function MobilizSlider({ oevk, onValueChange }) {
           <input
             type="range"
             min={1}
-            max={30}
+            max={MAX_SLIDER_COUNT}
             step={1}
             value={count}
             onChange={handleChange}
@@ -153,7 +155,7 @@ export default function MobilizSlider({ oevk, onValueChange }) {
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
             <span style={scaleLabelStyle}>1</span>
-            <span style={scaleLabelStyle}>30</span>
+            <span style={scaleLabelStyle}>{MAX_SLIDER_COUNT}</span>
           </div>
         </div>
       </div>
