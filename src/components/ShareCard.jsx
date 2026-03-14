@@ -1,15 +1,174 @@
 import { useRef, useState } from 'react'
 import { toPng } from 'html-to-image'
 
-// Export canvas: 540x675 -> 1080x1350px @2x (4:5 social ratio)
-const EXP_W = 540
-const EXP_H = 675
+const EXPORT_SPECS = {
+  social: {
+    width: 540,
+    height: 675,
+    pixelRatio: 2,
+    label: '1080x1350 PNG',
+  },
+  print: {
+    width: 620,
+    height: 874,
+    pixelRatio: 2,
+    label: 'A6 PNG',
+  },
+}
+
+const CARD_VARIANTS = {
+  screen: {
+    height: 386,
+    radius: 28,
+    padding: '1.45rem',
+    border: '1px solid #dec8b1',
+    shadow: '0 26px 56px rgba(89,53,24,0.12)',
+    logoGap: 7,
+    logoSize: '0.6rem',
+    kickerSize: '0.82rem',
+    countSize: '6.1rem',
+    unitSize: '1.55rem',
+    bodyJustify: 'space-between',
+    bodyGap: '1rem',
+    bodyMarginTop: '1.15rem',
+    leadDot: 12,
+    supportDot: 9,
+    dotsGap: 5,
+    dotsMarginTop: 12,
+    panelPadding: '1rem 1rem 0.95rem',
+    panelRadius: 16,
+    panelLabel: '0.76rem',
+    panelValue: '1.1rem',
+    panelBody: '1rem',
+    panelSupport: '0.95rem',
+    footer: false,
+  },
+  social: {
+    height: EXPORT_SPECS.social.height,
+    radius: 0,
+    padding: '1.5rem',
+    border: 'none',
+    shadow: 'none',
+    logoGap: 8,
+    logoSize: '0.78rem',
+    kickerSize: '1rem',
+    countSize: '8.9rem',
+    unitSize: '2.1rem',
+    bodyJustify: 'space-between',
+    bodyGap: '1rem',
+    bodyMarginTop: '1.1rem',
+    leadDot: 16,
+    supportDot: 12,
+    dotsGap: 7,
+    dotsMarginTop: 18,
+    panelPadding: '1.15rem 1.15rem 1.05rem',
+    panelRadius: 18,
+    panelLabel: '0.96rem',
+    panelValue: '1.7rem',
+    panelBody: '1.28rem',
+    panelSupport: '1.12rem',
+    footer: false,
+  },
+  print: {
+    height: EXPORT_SPECS.print.height,
+    radius: 0,
+    padding: '1.65rem',
+    border: 'none',
+    shadow: 'none',
+    logoGap: 9,
+    logoSize: '0.86rem',
+    kickerSize: '1.06rem',
+    countSize: '10.8rem',
+    unitSize: '2.35rem',
+    bodyJustify: 'space-between',
+    bodyGap: '1.15rem',
+    bodyMarginTop: '1.2rem',
+    leadDot: 18,
+    supportDot: 13,
+    dotsGap: 7,
+    dotsMarginTop: 18,
+    panelPadding: '1.25rem 1.2rem 1.15rem',
+    panelRadius: 20,
+    panelLabel: '0.98rem',
+    panelValue: '1.88rem',
+    panelBody: '1.36rem',
+    panelSupport: '1.08rem',
+    footer: true,
+  },
+}
+
+const FLYER_VARIANTS = {
+  screen: {
+    height: 478,
+    radius: 24,
+    padding: '1.45rem',
+    border: '1px solid #dec8b1',
+    shadow: '0 26px 56px rgba(89,53,24,0.1)',
+    logoGap: 7,
+    logoSize: '0.6rem',
+    bodyGap: '1.15rem',
+    bodyMarginTop: '1.2rem',
+    areaSize: '0.72rem',
+    countSize: '4.25rem',
+    subtitleSize: '1rem',
+    messagePadding: '1rem',
+    messageRadius: 16,
+    messageLead: '1.04rem',
+    messageSupport: '0.95rem',
+    ctaTop: '1.45rem',
+    ctaWord: '2.6rem',
+    ctaBottom: '1.85rem',
+  },
+  social: {
+    height: EXPORT_SPECS.social.height,
+    radius: 0,
+    padding: '1.5rem',
+    border: 'none',
+    shadow: 'none',
+    logoGap: 8,
+    logoSize: '0.78rem',
+    bodyGap: '1.2rem',
+    bodyMarginTop: '1rem',
+    areaSize: '0.92rem',
+    countSize: '6.6rem',
+    subtitleSize: '1.45rem',
+    messagePadding: '1.15rem',
+    messageRadius: 18,
+    messageLead: '1.46rem',
+    messageSupport: '1.08rem',
+    ctaTop: '2.35rem',
+    ctaWord: '4.5rem',
+    ctaBottom: '3rem',
+  },
+  print: {
+    height: EXPORT_SPECS.print.height,
+    radius: 0,
+    padding: '1.65rem',
+    border: 'none',
+    shadow: 'none',
+    logoGap: 9,
+    logoSize: '0.86rem',
+    bodyGap: '1.3rem',
+    bodyMarginTop: '1.15rem',
+    areaSize: '0.98rem',
+    countSize: '8.2rem',
+    subtitleSize: '1.72rem',
+    messagePadding: '1.3rem',
+    messageRadius: 20,
+    messageLead: '1.6rem',
+    messageSupport: '1.12rem',
+    ctaTop: '2.7rem',
+    ctaWord: '5.35rem',
+    ctaBottom: '3.4rem',
+  },
+}
 
 export default function ShareCard({ oevk, mobilizCount }) {
-  const exportCardRef = useRef(null)
-  const exportFlyerRef = useRef(null)
-  const [loadingShare, setLoadingShare] = useState(false)
-  const [loadingFlyer, setLoadingFlyer] = useState(false)
+  const socialCardRef = useRef(null)
+  const socialFlyerRef = useRef(null)
+  const printFlyerRef = useRef(null)
+  const activeActionRef = useRef(null)
+  const [loadingAction, setLoadingAction] = useState(null)
 
   const margin = oevk.margin
   const needCount = Math.max(1, Math.ceil(margin / mobilizCount))
@@ -24,45 +183,75 @@ export default function ShareCard({ oevk, mobilizCount }) {
   const showPreviewMore = mobilizCount > previewDotCount
   const showExportMore = mobilizCount > exportDotCount
 
-  const groupImpactText =
-    needCount === 1
-      ? 'Ha még egy ember ugyanígy mozgósít, ez a különbség behozható.'
-      : `Ha ${needCountText}-en ugyanúgy mozgósítunk, mint te, ez a különbség behozható.`
-
-  const turnoutImpactText =
-    everyN && everyN >= 2
-      ? `Ez ugyanaz, mintha minden ${everyN}. otthon maradó elmenne szavazni.`
-      : null
-
-  const flyerImpactText =
-    everyN && everyN >= 2
-      ? `Ha minden ${everyN}. otthon maradó elmegy, eltűnik az ${marginText} különbség.`
-      : `A körzetben ${marginText} volt a különbség. Ennyi szavazat valóban eldönthet egy választást.`
-
   const cardCopy = {
     displayName,
     marginText,
-    groupImpactText,
-    turnoutImpactText,
+    socialLead:
+      needCount === 1
+        ? `Ha még egy ember ugyanígy mozgósít, ez a ${marginText} különbség behozható.`
+        : `Ha ${needCountText}-en ugyanúgy mozgósítunk, mint én, ez a ${marginText} különbség behozható.`,
+    socialSupport:
+      everyN && everyN >= 2
+        ? `Ez ugyanaz, mintha minden ${everyN}. otthon maradó elmenne szavazni.`
+        : null,
+    printLead:
+      needCount === 1
+        ? `Ez a ${marginText} különbség behozható, ha még egy ember ugyanígy mozgósít.`
+        : `Ha ${needCountText}-en ugyanúgy mozgósítunk, a ${marginText} különbség behozható.`,
+    printSupport:
+      everyN && everyN >= 2
+        ? `Ez nagyjából minden ${everyN}. otthon maradó szavazatát jelenti.`
+        : null,
+    footer: 'A TE MOZGÓSÍTÁSOD IS SZÁMÍT.',
   }
 
   const flyerCopy = {
     displayName,
     nonVotersText,
-    flyerImpactText,
-    turnoutImpactText,
+    socialLead:
+      everyN && everyN >= 2
+        ? `Ha minden ${everyN}. otthon maradó elmegy, a ${marginText} különbség behozható.`
+        : `A körzetben ${marginText} volt a különbség. Ennyi szavazat valóban eldönthet egy választást.`,
+    socialSupport:
+      everyN && everyN >= 2
+        ? `Ez ugyanaz, mintha minden ${everyN}. otthon maradó elmenne szavazni.`
+        : null,
+    printLead:
+      everyN && everyN >= 2
+        ? `A ${marginText} különbség behozható, ha minden ${everyN}. otthon maradó szavaz.`
+        : `A ${marginText} különbség ezen a körzeten belül valódi döntő erő.`,
+    printSupport:
+      everyN && everyN >= 2
+        ? `Egyetlen mozdulat: menj el szavazni, és szólj másnak is.`
+        : 'A te szavazatod itt is számít.',
   }
 
-  async function capturePng(ref, pixelRatio = 2) {
-    return toPng(ref.current, { pixelRatio, cacheBust: true })
+  async function capturePng(ref, exportKey) {
+    const spec = EXPORT_SPECS[exportKey]
+    return toPng(ref.current, {
+      pixelRatio: spec.pixelRatio,
+      cacheBust: true,
+    })
   }
 
-  async function handleShare() {
+  async function withLoading(action, work) {
+    if (activeActionRef.current) return
+
+    activeActionRef.current = action
     try {
-      setLoadingShare(true)
-      const dataUrl = await capturePng(exportCardRef)
+      setLoadingAction(action)
+      await work()
+    } finally {
+      activeActionRef.current = null
+      setLoadingAction(null)
+    }
+  }
+
+  async function handleShareSocialCard() {
+    await withLoading('share-card-social', async () => {
+      const dataUrl = await capturePng(socialCardRef, 'social')
       const blob = await (await fetch(dataUrl)).blob()
-      const file = new File([blob], 'szavazatom-dont.png', { type: 'image/png' })
+      const file = new File([blob], 'szavazatom-dont-social.png', { type: 'image/png' })
 
       if (navigator.canShare?.({ files: [file] })) {
         try {
@@ -71,31 +260,16 @@ export default function ShareCard({ oevk, mobilizCount }) {
           // Native share was cancelled.
         }
       } else {
-        triggerDownload(dataUrl, 'szavazatom-dont.png')
+        triggerDownload(dataUrl, 'szavazatom-dont-social.png')
       }
-    } finally {
-      setLoadingShare(false)
-    }
+    })
   }
 
-  async function handleDownloadCard() {
-    try {
-      setLoadingShare(true)
-      const dataUrl = await capturePng(exportCardRef)
-      triggerDownload(dataUrl, 'szavazatom-dont.png')
-    } finally {
-      setLoadingShare(false)
-    }
-  }
-
-  async function handleFlyerDownload() {
-    try {
-      setLoadingFlyer(true)
-      const dataUrl = await capturePng(exportFlyerRef)
-      triggerDownload(dataUrl, 'korzetunk-otthon-maradoi.png')
-    } finally {
-      setLoadingFlyer(false)
-    }
+  async function handleDownload(ref, exportKey, filename, action) {
+    await withLoading(action, async () => {
+      const dataUrl = await capturePng(ref, exportKey)
+      triggerDownload(dataUrl, filename)
+    })
   }
 
   function triggerDownload(dataUrl, filename) {
@@ -105,12 +279,12 @@ export default function ShareCard({ oevk, mobilizCount }) {
     a.click()
   }
 
+  const isBusy = loadingAction !== null
+  const isLoading = (action) => loadingAction === action
+
   return (
     <div className="share-page">
-      <div
-        className="share-page-header"
-        style={{ marginBottom: '1.75rem' }}
-      >
+      <div className="share-page-header" style={{ marginBottom: '1.75rem' }}>
         <h3 style={pageTitleStyle}>Megosztás</h3>
         <p style={pageIntroStyle}>Mentsd le vagy oszd meg a kártyákat.</p>
       </div>
@@ -124,6 +298,7 @@ export default function ShareCard({ oevk, mobilizCount }) {
 
           <div style={{ width: '100%', maxWidth: 430 }}>
             <SocialCardPreview
+              variant="screen"
               mobilizCount={mobilizCount}
               dotCount={previewDotCount}
               showMore={showPreviewMore}
@@ -133,18 +308,22 @@ export default function ShareCard({ oevk, mobilizCount }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: '1rem', width: '100%', maxWidth: 430 }}>
             <button
-              onClick={handleShare}
-              disabled={loadingShare}
-              style={primaryBtnStyle(loadingShare)}
+              onClick={handleShareSocialCard}
+              disabled={isLoading('share-card-social')}
+              aria-disabled={isBusy}
+              style={primaryBtnStyle({ busy: isBusy, loading: isLoading('share-card-social') })}
             >
-              {loadingShare ? 'Feldolgozás...' : 'Megosztom ->'}
+              {loadingAction === 'share-card-social' ? 'Feldolgozás...' : 'Megosztom ->'}
             </button>
             <button
-              onClick={handleDownloadCard}
-              disabled={loadingShare}
-              style={secondaryBtnStyle}
+              onClick={() => handleDownload(socialCardRef, 'social', 'szavazatom-dont-social.png', 'download-card-social')}
+              disabled={isLoading('download-card-social')}
+              aria-disabled={isBusy}
+              style={secondaryBtnStyle({ busy: isBusy, loading: isLoading('download-card-social') })}
             >
-              Letöltés (1080x1350 PNG)
+              {loadingAction === 'download-card-social'
+                ? 'Feldolgozás...'
+                : `Letöltés socialra (${EXPORT_SPECS.social.label})`}
             </button>
           </div>
         </div>
@@ -156,16 +335,29 @@ export default function ShareCard({ oevk, mobilizCount }) {
           </div>
 
           <div style={{ width: '100%', maxWidth: 360 }}>
-            <FlyerPreview copy={flyerCopy} />
+            <FlyerPreview variant="screen" copy={flyerCopy} />
           </div>
 
-          <div style={{ marginTop: '1rem', width: '100%', maxWidth: 360 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: '1rem', width: '100%', maxWidth: 360 }}>
             <button
-              onClick={handleFlyerDownload}
-              disabled={loadingFlyer}
-              style={flyerBtnStyle(loadingFlyer)}
+              onClick={() => handleDownload(socialFlyerRef, 'social', 'korzetunk-otthon-maradoi-social.png', 'download-flyer-social')}
+              disabled={isLoading('download-flyer-social')}
+              aria-disabled={isBusy}
+              style={secondaryBtnStyle({ busy: isBusy, loading: isLoading('download-flyer-social') })}
             >
-              {loadingFlyer ? 'Feldolgozás...' : 'Letöltés (1080x1350 PNG)'}
+              {loadingAction === 'download-flyer-social'
+                ? 'Feldolgozás...'
+                : `Letöltés socialra (${EXPORT_SPECS.social.label})`}
+            </button>
+            <button
+              onClick={() => handleDownload(printFlyerRef, 'print', 'korzetunk-otthon-maradoi-print-a6.png', 'download-flyer-print')}
+              disabled={isLoading('download-flyer-print')}
+              aria-disabled={isBusy}
+              style={flyerBtnStyle({ busy: isBusy, loading: isLoading('download-flyer-print') })}
+            >
+              {loadingAction === 'download-flyer-print'
+                ? 'Feldolgozás...'
+                : `Letöltés nyomtatáshoz (${EXPORT_SPECS.print.label})`}
             </button>
           </div>
         </div>
@@ -173,75 +365,104 @@ export default function ShareCard({ oevk, mobilizCount }) {
 
       <p style={footnoteStyle}>Nem tárolunk semmilyen személyes adatot.</p>
 
-      <div
-        style={hiddenExportWrapStyle}
-      >
-        <div
-          ref={exportCardRef}
-          style={exportSurfaceStyle}
-        >
+      <HiddenExport spec={EXPORT_SPECS.social}>
+        <div ref={socialCardRef} style={exportSurfaceStyle(EXPORT_SPECS.social)}>
           <SocialCardPreview
+            variant="social"
             mobilizCount={mobilizCount}
             dotCount={exportDotCount}
             showMore={showExportMore}
             copy={cardCopy}
-            exportMode
           />
         </div>
-      </div>
+      </HiddenExport>
 
-      <div
-        style={hiddenExportWrapStyle}
-      >
-        <div
-          ref={exportFlyerRef}
-          style={exportSurfaceStyle}
-        >
-          <FlyerPreview copy={flyerCopy} exportMode />
+      <HiddenExport spec={EXPORT_SPECS.social}>
+        <div ref={socialFlyerRef} style={exportSurfaceStyle(EXPORT_SPECS.social)}>
+          <FlyerPreview variant="social" copy={flyerCopy} />
         </div>
-      </div>
+      </HiddenExport>
+
+      <HiddenExport spec={EXPORT_SPECS.print}>
+        <div ref={printFlyerRef} style={exportSurfaceStyle(EXPORT_SPECS.print)}>
+          <FlyerPreview variant="print" copy={flyerCopy} />
+        </div>
+      </HiddenExport>
     </div>
   )
 }
 
-function SocialCardPreview({ mobilizCount, dotCount, showMore, copy, exportMode = false }) {
+function HiddenExport({ spec, children }) {
   return (
-    <div style={cardShellStyle(exportMode)}>
+    <div
+      style={{
+        position: 'fixed',
+        top: '-9999px',
+        left: '-9999px',
+        width: spec.width,
+        height: spec.height,
+        zIndex: -1,
+        pointerEvents: 'none',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function SocialCardPreview({ mobilizCount, dotCount, showMore, copy, variant }) {
+  const config = CARD_VARIANTS[variant]
+  const leadText = variant === 'print' ? copy.printLead : copy.socialLead
+  const supportText = variant === 'print' ? copy.printSupport : copy.socialSupport
+
+  return (
+    <div style={cardShellStyle(config)}>
       <CardGlow />
-      <div style={cardInnerStyle}>
-        <BrandLogo exportMode={exportMode} />
-        <div style={cardBodyStyle(exportMode)}>
+      <div style={sharedInnerStyle(config)}>
+        <BrandLogo gap={config.logoGap} textSize={config.logoSize} />
+        <div style={stackStyle(config)}>
           <CardHero
+            config={config}
             mobilizCount={mobilizCount}
             dotCount={dotCount}
             showMore={showMore}
-            exportMode={exportMode}
           />
-          <CardImpactPanel copy={copy} exportMode={exportMode} />
+          <CardImpactPanel
+            config={config}
+            displayName={copy.displayName}
+            marginText={copy.marginText}
+            leadText={leadText}
+            supportText={supportText}
+          />
+          {config.footer && <CardFooter text={copy.footer} />}
         </div>
       </div>
     </div>
   )
 }
 
-function FlyerPreview({ copy, exportMode = false }) {
+function FlyerPreview({ copy, variant }) {
+  const config = FLYER_VARIANTS[variant]
+  const leadText = variant === 'print' ? copy.printLead : copy.socialLead
+  const supportText = variant === 'print' ? copy.printSupport : copy.socialSupport
+
   return (
-    <div style={flyerShellStyle(exportMode)}>
+    <div style={flyerShellStyle(config)}>
       <FlyerGlow />
-      <div style={cardInnerStyle}>
-        <BrandLogo exportMode={exportMode} />
-        <div style={flyerBodyStyle(exportMode)}>
+      <div style={sharedInnerStyle(config)}>
+        <BrandLogo gap={config.logoGap} textSize={config.logoSize} />
+        <div style={stackStyle(config)}>
           <FlyerHero
+            config={config}
             displayName={copy.displayName}
             nonVotersText={copy.nonVotersText}
-            exportMode={exportMode}
           />
           <FlyerMessage
-            flyerImpactText={copy.flyerImpactText}
-            turnoutImpactText={copy.turnoutImpactText}
-            exportMode={exportMode}
+            config={config}
+            leadText={leadText}
+            supportText={supportText}
           />
-          <FlyerCta exportMode={exportMode} />
+          <FlyerCta config={config} />
         </div>
       </div>
     </div>
@@ -269,25 +490,37 @@ function FlyerGlow() {
         position: 'absolute',
         inset: 0,
         background:
-          'radial-gradient(circle at 84% 22%, rgba(227,90,43,0.16), transparent 34%), radial-gradient(circle at 14% 78%, rgba(215,156,28,0.12), transparent 28%)',
+          'radial-gradient(circle at 86% 24%, rgba(227,90,43,0.18), transparent 36%), radial-gradient(circle at 14% 84%, rgba(215,156,28,0.13), transparent 30%)',
         pointerEvents: 'none',
       }}
     />
   )
 }
 
-function BrandLogo({ exportMode }) {
+function BrandLogo({ gap, textSize }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: exportMode ? 8 : 7, position: 'relative', zIndex: 1 }}>
-      <DotMark exportMode={exportMode} />
-      <span style={logoTextStyle(exportMode)}>SzavazatSúly</span>
+    <div style={{ display: 'flex', alignItems: 'center', gap, position: 'relative', zIndex: 1 }}>
+      <DotMark textSize={textSize} />
+      <span
+        style={{
+          fontFamily: 'Barlow Condensed, sans-serif',
+          fontWeight: 700,
+          fontSize: textSize,
+          letterSpacing: '0.28em',
+          textTransform: 'uppercase',
+          color: '#8d7763',
+        }}
+      >
+        SzavazatSúly
+      </span>
     </div>
   )
 }
 
-function DotMark({ exportMode }) {
+function DotMark({ textSize }) {
+  const large = parseFloat(textSize) >= 0.78
   return (
-    <svg width={exportMode ? '22' : '18'} height={exportMode ? '12' : '10'} viewBox="0 0 18 10">
+    <svg width={large ? '22' : '18'} height={large ? '12' : '10'} viewBox="0 0 18 10">
       <circle cx="4" cy="5" r="4" fill="#E35A2B" />
       <circle cx="11" cy="5" r="3" fill="#D79C1C" opacity="0.92" />
       <circle cx="16" cy="5" r="2" fill="#E35A2B" opacity="0.35" />
@@ -295,194 +528,179 @@ function DotMark({ exportMode }) {
   )
 }
 
-function CardHero({ mobilizCount, dotCount, showMore, exportMode }) {
+function CardHero({ config, mobilizCount, dotCount, showMore }) {
   return (
     <div style={{ position: 'relative', zIndex: 1 }}>
-      <div style={cardKickerStyle(exportMode)}>Én hozok</div>
-      <div style={cardCountStyle(exportMode)}>{mobilizCount}</div>
-      <div style={cardUnitStyle(exportMode)}>embert</div>
-      <div style={cardDotsRowStyle(exportMode)}>
-        <span style={leadDotStyle(exportMode)} />
+      <div style={cardKickerStyle(config)}>{'Én hozok'}</div>
+      <div style={cardCountStyle(config)}>{mobilizCount}</div>
+      <div style={cardUnitStyle(config)}>embert</div>
+      <div style={cardDotsRowStyle(config)}>
+        <span style={leadDotStyle(config)} />
         {Array.from({ length: dotCount }, (_, index) => (
-          <span key={index} style={supportDotStyle(exportMode)} />
+          <span key={index} style={supportDotStyle(config)} />
         ))}
-        {showMore && (
-          <span style={extraDotsStyle(exportMode)}>+{mobilizCount - dotCount}</span>
-        )}
+        {showMore && <span style={extraDotsStyle(config)}>+{mobilizCount - dotCount}</span>}
       </div>
     </div>
   )
 }
 
-function CardImpactPanel({ copy, exportMode }) {
+function CardImpactPanel({ config, displayName, marginText, leadText, supportText }) {
   return (
-    <div style={cardPanelStyle(exportMode)}>
-      <div style={cardPanelDividerStyle(exportMode)} />
-      <div style={cardAreaStyle(exportMode)}>{copy.displayName}</div>
-      <div style={impactBlockStyle(exportMode)}>
-        <div style={impactLabelStyle(exportMode)}>Különbség 2022-ben</div>
-        <div style={impactValueStyle(exportMode, 'ember')}>{copy.marginText}</div>
+    <div style={cardPanelStyle(config)}>
+      <div style={cardAreaStyle(config)}>{displayName}</div>
+      <div style={impactBlockStyle}>
+        <div style={impactLabelStyle(config)}>Különbség 2022-ben</div>
+        <div style={impactValueStyle(config)}>{marginText}</div>
       </div>
-      <p style={impactBodyStyle(exportMode)}>
-        {copy.groupImpactText}
-      </p>
-      {copy.turnoutImpactText && (
-        <p style={impactSupportStyle(exportMode)}>
-          {copy.turnoutImpactText}
-        </p>
-      )}
+      <p style={impactBodyStyle(config)}>{leadText}</p>
+      {supportText && <p style={impactSupportStyle(config)}>{supportText}</p>}
     </div>
   )
 }
 
-function FlyerHero({ displayName, nonVotersText, exportMode }) {
+function CardFooter({ text }) {
+  return (
+    <div style={cardFooterWrapStyle}>
+      <span style={cardFooterTextStyle}>A TE MOZGÓSÍTÁSOD</span>
+      <span style={cardFooterAccentStyle}>IS SZÁMÍT.</span>
+      <span style={cardFooterDotStyle}>.</span>
+      <span style={visuallyHiddenStyle}>{text}</span>
+    </div>
+  )
+}
+
+function FlyerHero({ config, displayName, nonVotersText }) {
   return (
     <div style={{ position: 'relative', zIndex: 1 }}>
-      <p style={flyerAreaStyle(exportMode)}>{displayName}</p>
-      <div style={flyerCountStyle(exportMode)}>{nonVotersText}</div>
-      <p style={flyerSubtitleStyle(exportMode)}>ember nem szavazott 2022-ben</p>
+      <p style={flyerAreaStyle(config)}>{displayName}</p>
+      <div style={flyerCountStyle(config)}>{nonVotersText}</div>
+      <p style={flyerSubtitleStyle(config)}>ember nem szavazott 2022-ben</p>
     </div>
   )
 }
 
-function FlyerMessage({ flyerImpactText, turnoutImpactText, exportMode }) {
+function FlyerMessage({ config, leadText, supportText }) {
   return (
-    <div style={flyerMessageWrapStyle(exportMode)}>
-      <p style={flyerMessageLeadStyle(exportMode)}>{flyerImpactText}</p>
-      {turnoutImpactText && (
-        <p style={flyerMessageSupportStyle(exportMode)}>{turnoutImpactText}</p>
-      )}
+    <div style={flyerMessageWrapStyle(config)}>
+      <p style={flyerMessageLeadStyle(config)}>{leadText}</p>
+      {supportText && <p style={flyerMessageSupportStyle(config)}>{supportText}</p>}
     </div>
   )
 }
 
-function FlyerCta({ exportMode }) {
+function FlyerCta({ config }) {
   return (
     <div style={{ position: 'relative', zIndex: 1 }}>
-      <p style={flyerCtaStyle(exportMode)}>Menj el szavazni!</p>
-      <p style={flyerCtaSubStyle(exportMode)}>Egy mozgósított szavazó is számít.</p>
+      <div style={flyerCtaWrapStyle}>
+        <div style={flyerCtaTopStyle(config)}>A TE</div>
+        <div style={flyerCtaWordStyle(config)}>SZAVAZATOD</div>
+        <div style={flyerCtaBottomStyle(config)}>
+          IS DÖNTHET<span style={flyerCtaDotStyle}>.</span>
+        </div>
+      </div>
     </div>
   )
 }
 
-function cardShellStyle(exportMode) {
+function cardShellStyle(config) {
   return {
     width: '100%',
-    minHeight: exportMode ? EXP_H : 386,
+    minHeight: config.height,
     background: 'linear-gradient(155deg, #fffaf3 0%, #f8eee2 56%, #f1e0d0 100%)',
-    borderRadius: exportMode ? 0 : 28,
-    border: exportMode ? 'none' : '1px solid #dec8b1',
-    boxShadow: exportMode ? 'none' : '0 26px 56px rgba(89,53,24,0.12)',
+    borderRadius: config.radius,
+    border: config.border,
+    boxShadow: config.shadow,
     position: 'relative',
     overflow: 'hidden',
   }
 }
 
-function flyerShellStyle(exportMode) {
+function flyerShellStyle(config) {
   return {
     width: '100%',
-    minHeight: exportMode ? EXP_H : 478,
+    minHeight: config.height,
     background: 'linear-gradient(160deg, #fffaf3 0%, #f7ecdf 58%, #efdccc 100%)',
-    borderRadius: exportMode ? 0 : 24,
-    border: exportMode ? 'none' : '1px solid #dec8b1',
-    boxShadow: exportMode ? 'none' : '0 26px 56px rgba(89,53,24,0.1)',
+    borderRadius: config.radius,
+    border: config.border,
+    boxShadow: config.shadow,
     position: 'relative',
     overflow: 'hidden',
   }
 }
 
-const cardInnerStyle = {
-  position: 'relative',
-  zIndex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-  padding: '1.55rem',
-  boxSizing: 'border-box',
+function sharedInnerStyle(config) {
+  return {
+    position: 'relative',
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    padding: config.padding,
+    boxSizing: 'border-box',
+  }
 }
 
-function cardBodyStyle(exportMode) {
+function stackStyle(config) {
   return {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: config.bodyJustify,
     flex: 1,
-    gap: exportMode ? '1.35rem' : '1rem',
-    marginTop: exportMode ? '1.6rem' : '1.15rem',
+    gap: config.bodyGap,
+    marginTop: config.bodyMarginTop,
   }
 }
 
-function flyerBodyStyle(exportMode) {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    flex: 1,
-    gap: exportMode ? '1.4rem' : '1.05rem',
-    marginTop: exportMode ? '1.6rem' : '1.25rem',
-  }
-}
-
-function logoTextStyle(exportMode) {
+function cardKickerStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 700,
-    fontSize: exportMode ? '0.78rem' : '0.6rem',
-    letterSpacing: '0.28em',
-    textTransform: 'uppercase',
-    color: '#8d7763',
-  }
-}
-
-function cardKickerStyle(exportMode) {
-  return {
-    fontFamily: 'Barlow Condensed, sans-serif',
-    fontWeight: 700,
-    fontSize: exportMode ? '1.02rem' : '0.82rem',
+    fontSize: config.kickerSize,
     letterSpacing: '0.22em',
     textTransform: 'uppercase',
     color: '#8d7763',
-    marginBottom: exportMode ? 4 : 2,
+    marginBottom: 4,
   }
 }
 
-function cardCountStyle(exportMode) {
+function cardCountStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 900,
-    fontSize: exportMode ? '7.9rem' : '5.7rem',
+    fontSize: config.countSize,
     lineHeight: 0.92,
     letterSpacing: '-0.03em',
     color: '#d85026',
   }
 }
 
-function cardUnitStyle(exportMode) {
+function cardUnitStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 900,
-    fontSize: exportMode ? '1.85rem' : '1.5rem',
+    fontSize: config.unitSize,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
     color: '#34251b',
-    marginTop: exportMode ? 6 : 4,
+    marginTop: 6,
   }
 }
 
-function cardDotsRowStyle(exportMode) {
+function cardDotsRowStyle(config) {
   return {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: exportMode ? 6 : 5,
-    marginTop: exportMode ? 16 : 12,
+    gap: config.dotsGap,
+    marginTop: config.dotsMarginTop,
     alignItems: 'center',
   }
 }
 
-function leadDotStyle(exportMode) {
+function leadDotStyle(config) {
   return {
-    width: exportMode ? 16 : 12,
-    height: exportMode ? 16 : 12,
+    width: config.leadDot,
+    height: config.leadDot,
     borderRadius: '50%',
     backgroundColor: '#D79C1C',
     display: 'inline-block',
@@ -490,10 +708,10 @@ function leadDotStyle(exportMode) {
   }
 }
 
-function supportDotStyle(exportMode) {
+function supportDotStyle(config) {
   return {
-    width: exportMode ? 11 : 9,
-    height: exportMode ? 11 : 9,
+    width: config.supportDot,
+    height: config.supportDot,
     borderRadius: '50%',
     backgroundColor: '#E35A2B',
     display: 'inline-block',
@@ -502,104 +720,127 @@ function supportDotStyle(exportMode) {
   }
 }
 
-function extraDotsStyle(exportMode) {
+function extraDotsStyle(config) {
   return {
     color: '#8d7763',
-    fontSize: exportMode ? 15 : 11,
+    fontSize: config.logoSize,
     fontFamily: 'Barlow Condensed, sans-serif',
     letterSpacing: '0.05em',
   }
 }
 
-function cardPanelStyle(exportMode) {
+function cardPanelStyle(config) {
   return {
     position: 'relative',
     zIndex: 1,
-    background: exportMode ? 'rgba(255, 249, 241, 0.62)' : 'rgba(255, 249, 241, 0.58)',
+    background: 'rgba(255, 249, 241, 0.62)',
     border: '1px solid rgba(205, 181, 155, 0.88)',
-    borderRadius: exportMode ? 18 : 16,
-    padding: exportMode ? '1.15rem 1.15rem 1.08rem' : '0.95rem 0.95rem 0.88rem',
-    boxShadow: exportMode ? '0 12px 28px rgba(89,53,24,0.06)' : 'none',
+    borderRadius: config.panelRadius,
+    padding: config.panelPadding,
+    boxShadow: config.shadow === 'none' ? 'none' : '0 12px 24px rgba(89,53,24,0.05)',
     backdropFilter: 'blur(8px)',
   }
 }
 
-function cardPanelDividerStyle(exportMode) {
-  return {
-    width: '100%',
-    height: 1,
-    background: '#d8c2ad',
-    marginBottom: exportMode ? 12 : 10,
-  }
-}
-
-function cardAreaStyle(exportMode) {
+function cardAreaStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
-    fontSize: exportMode ? '0.84rem' : '0.68rem',
+    fontSize: `calc(${config.panelLabel} + 0.08rem)`,
     letterSpacing: '0.18em',
     textTransform: 'uppercase',
     color: '#8d7763',
-    marginBottom: exportMode ? 10 : 8,
+    marginBottom: 10,
   }
 }
 
-function impactBlockStyle(exportMode) {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: exportMode ? 4 : 2,
-    marginBottom: exportMode ? 10 : 8,
-  }
+const impactBlockStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 4,
+  marginBottom: 10,
 }
 
-function impactLabelStyle(exportMode) {
+function impactLabelStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
-    fontSize: exportMode ? '0.95rem' : '0.76rem',
+    fontSize: config.panelLabel,
     letterSpacing: '0.14em',
     textTransform: 'uppercase',
     color: '#8d7763',
   }
 }
 
-function impactValueStyle(exportMode, tone) {
+function impactValueStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 900,
-    fontSize: exportMode ? '1.45rem' : '1.08rem',
+    fontSize: config.panelValue,
     lineHeight: 1.02,
-    color: tone === 'ember' ? '#d85026' : '#94680f',
+    color: '#d85026',
   }
 }
 
-function impactBodyStyle(exportMode) {
+function impactBodyStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
-    fontSize: exportMode ? '1.1rem' : '0.95rem',
-    lineHeight: exportMode ? 1.18 : 1.2,
+    fontSize: config.panelBody,
+    lineHeight: 1.16,
     color: '#35251b',
     margin: 0,
     fontWeight: 700,
   }
 }
 
-function impactSupportStyle(exportMode) {
+function impactSupportStyle(config) {
   return {
     fontFamily: 'Crimson Pro, Georgia, serif',
-    fontSize: exportMode ? '1.12rem' : '0.96rem',
-    lineHeight: exportMode ? 1.34 : 1.35,
+    fontSize: config.panelSupport,
+    lineHeight: 1.32,
     color: '#6f5b4b',
-    margin: exportMode ? '0.55rem 0 0' : '0.4rem 0 0',
+    margin: '0.55rem 0 0',
     fontStyle: 'italic',
   }
 }
 
-function flyerAreaStyle(exportMode) {
+const cardFooterWrapStyle = {
+  display: 'flex',
+  alignItems: 'baseline',
+  gap: 6,
+  flexWrap: 'wrap',
+}
+
+const cardFooterTextStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontWeight: 900,
+  fontSize: '2rem',
+  lineHeight: 1,
+  letterSpacing: '0.04em',
+  textTransform: 'uppercase',
+  color: 'var(--ink)',
+}
+
+const cardFooterAccentStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontWeight: 900,
+  fontSize: '2rem',
+  lineHeight: 1,
+  letterSpacing: '0.04em',
+  textTransform: 'uppercase',
+  color: 'var(--ember)',
+}
+
+const cardFooterDotStyle = {
+  color: 'var(--amber)',
+  fontSize: '2rem',
+  lineHeight: 1,
+  fontWeight: 900,
+}
+
+function flyerAreaStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 700,
-    fontSize: exportMode ? '0.88rem' : '0.72rem',
+    fontSize: config.areaSize,
     letterSpacing: '0.22em',
     textTransform: 'uppercase',
     color: '#cf5b31',
@@ -607,93 +848,132 @@ function flyerAreaStyle(exportMode) {
   }
 }
 
-function flyerCountStyle(exportMode) {
+function flyerCountStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 900,
-    fontSize: exportMode ? '5.3rem' : '4.1rem',
+    fontSize: config.countSize,
     lineHeight: 0.96,
     letterSpacing: '-0.02em',
     color: '#2f2118',
   }
 }
 
-function flyerSubtitleStyle(exportMode) {
+function flyerSubtitleStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 700,
-    fontSize: exportMode ? '1.22rem' : '1rem',
+    fontSize: config.subtitleSize,
     textTransform: 'uppercase',
     letterSpacing: '0.06em',
     color: '#7a6654',
-    margin: exportMode ? '8px 0 0' : '6px 0 0',
+    margin: '8px 0 0',
   }
 }
 
-function flyerMessageWrapStyle(exportMode) {
+function flyerMessageWrapStyle(config) {
   return {
     background: 'rgba(245, 232, 218, 0.84)',
-    borderRadius: exportMode ? 18 : 16,
-    padding: exportMode ? '1.2rem 1.2rem 1.1rem' : '1rem',
+    borderRadius: config.messageRadius,
+    padding: config.messagePadding,
     border: '1px solid rgba(227,90,43,0.22)',
     position: 'relative',
     zIndex: 1,
-    boxShadow: exportMode ? '0 12px 24px rgba(89,53,24,0.05)' : 'none',
+    boxShadow: config.shadow === 'none' ? 'none' : '0 12px 24px rgba(89,53,24,0.05)',
   }
 }
 
-function flyerMessageLeadStyle(exportMode) {
+function flyerMessageLeadStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 800,
-    fontSize: exportMode ? '1.28rem' : '1.02rem',
-    lineHeight: exportMode ? 1.12 : 1.14,
+    fontSize: config.messageLead,
+    lineHeight: 1.12,
     color: '#35251b',
     margin: 0,
   }
 }
 
-function flyerMessageSupportStyle(exportMode) {
+function flyerMessageSupportStyle(config) {
   return {
     fontFamily: 'Crimson Pro, Georgia, serif',
     fontStyle: 'italic',
-    fontSize: exportMode ? '1.08rem' : '0.94rem',
+    fontSize: config.messageSupport,
     lineHeight: 1.34,
     color: '#7a6654',
-    margin: exportMode ? '0.7rem 0 0' : '0.55rem 0 0',
+    margin: '0.7rem 0 0',
   }
 }
 
-function flyerCtaStyle(exportMode) {
+const flyerCtaWrapStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontWeight: 900,
+  lineHeight: 0.96,
+  textTransform: 'uppercase',
+  letterSpacing: '0.03em',
+}
+
+function flyerCtaTopStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
     fontWeight: 900,
-    fontSize: exportMode ? '2.7rem' : '2rem',
+    fontSize: config.ctaWord,
     textTransform: 'uppercase',
     letterSpacing: '0.04em',
-    color: '#d85026',
-    margin: '0 0 4px',
+    color: 'var(--ink)',
+    margin: 0,
     lineHeight: 1,
   }
 }
 
-function flyerCtaSubStyle(exportMode) {
+function flyerCtaWordStyle(config) {
   return {
     fontFamily: 'Barlow Condensed, sans-serif',
-    fontSize: exportMode ? '0.98rem' : '0.82rem',
+    fontWeight: 900,
+    fontSize: config.ctaWord,
     textTransform: 'uppercase',
-    letterSpacing: '0.16em',
-    color: '#8d7763',
-    margin: 0,
+    letterSpacing: '0.02em',
+    color: 'var(--ember)',
+    margin: '0.08rem 0',
+    lineHeight: 0.95,
   }
 }
 
-function primaryBtnStyle(disabled) {
+function flyerCtaBottomStyle(config) {
   return {
-    background: disabled
+    fontFamily: 'Barlow Condensed, sans-serif',
+    fontWeight: 900,
+    fontSize: config.ctaWord,
+    textTransform: 'uppercase',
+    letterSpacing: '0.04em',
+    color: 'var(--ink)',
+    margin: 0,
+    lineHeight: 1,
+  }
+}
+
+const flyerCtaDotStyle = {
+  color: 'var(--amber)',
+}
+
+function buttonStateChrome({ busy, loading }) {
+  return {
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    opacity: busy && !loading ? 0.68 : 1,
+    pointerEvents: busy && !loading ? 'none' : 'auto',
+    cursor: busy ? 'wait' : 'pointer',
+  }
+}
+
+function primaryBtnStyle({ busy, loading }) {
+  return {
+    ...buttonStateChrome({ busy, loading }),
+    background: loading
       ? 'linear-gradient(180deg, #efe5d7 0%, #ead9c5 100%)'
       : 'linear-gradient(180deg, #e35a2b 0%, #be4219 100%)',
-    color: disabled ? '#7a6654' : '#fff9f1',
+    color: loading ? '#7a6654' : '#fff9f1',
     border: '1px solid rgba(190,66,25,0.28)',
     fontFamily: 'Barlow Condensed, sans-serif',
     fontSize: '1rem',
@@ -702,34 +982,38 @@ function primaryBtnStyle(disabled) {
     textTransform: 'uppercase',
     padding: '1rem',
     borderRadius: 999,
-    cursor: disabled ? 'not-allowed' : 'pointer',
     width: '100%',
-    boxShadow: disabled ? 'none' : '0 16px 32px rgba(227,90,43,0.18)',
-    transition: 'box-shadow 0.2s ease',
+    boxShadow: loading ? 'none' : '0 16px 32px rgba(227,90,43,0.18)',
+    transition: 'opacity 0.2s ease, box-shadow 0.2s ease, background 0.2s ease',
   }
 }
 
-const secondaryBtnStyle = {
-  background: 'rgba(252,248,241,0.78)',
-  color: '#35251b',
-  border: '1px solid #dcc8b4',
-  fontFamily: 'Barlow Condensed, sans-serif',
-  fontSize: '0.92rem',
-  fontWeight: 700,
-  letterSpacing: '0.1em',
-  textTransform: 'uppercase',
-  padding: '0.88rem',
-  borderRadius: 999,
-  cursor: 'pointer',
-  width: '100%',
+function secondaryBtnStyle({ busy, loading }) {
+  return {
+    ...buttonStateChrome({ busy, loading }),
+    background: loading ? 'rgba(239,229,215,0.92)' : 'rgba(252,248,241,0.78)',
+    color: loading ? '#7a6654' : '#35251b',
+    border: '1px solid #dcc8b4',
+    fontFamily: 'Barlow Condensed, sans-serif',
+    fontSize: '0.92rem',
+    fontWeight: 700,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    padding: '0.9rem',
+    borderRadius: 999,
+    width: '100%',
+    boxShadow: 'none',
+    transition: 'opacity 0.2s ease, background 0.2s ease, color 0.2s ease',
+  }
 }
 
-function flyerBtnStyle(disabled) {
+function flyerBtnStyle({ busy, loading }) {
   return {
-    background: disabled
+    ...buttonStateChrome({ busy, loading }),
+    background: loading
       ? 'rgba(252,248,241,0.6)'
       : 'linear-gradient(180deg, rgba(84,60,42,0.96) 0%, rgba(58,39,28,0.98) 100%)',
-    color: disabled ? '#7a6654' : 'rgba(255,255,255,0.9)',
+    color: loading ? '#7a6654' : 'rgba(255,255,255,0.92)',
     border: '1px solid rgba(89,53,24,0.18)',
     fontFamily: 'Barlow Condensed, sans-serif',
     fontSize: '0.95rem',
@@ -738,26 +1022,17 @@ function flyerBtnStyle(disabled) {
     textTransform: 'uppercase',
     padding: '0.95rem',
     borderRadius: 999,
-    cursor: disabled ? 'not-allowed' : 'pointer',
     width: '100%',
-    transition: 'opacity 0.2s ease',
-    boxShadow: disabled ? 'none' : '0 16px 30px rgba(89,53,24,0.14)',
+    transition: 'opacity 0.2s ease, background 0.2s ease',
+    boxShadow: loading ? 'none' : '0 16px 30px rgba(89,53,24,0.14)',
   }
 }
 
-const hiddenExportWrapStyle = {
-  position: 'fixed',
-  top: '-9999px',
-  left: '-9999px',
-  width: EXP_W,
-  height: EXP_H,
-  zIndex: -1,
-  pointerEvents: 'none',
-}
-
-const exportSurfaceStyle = {
-  width: EXP_W,
-  height: EXP_H,
+function exportSurfaceStyle(spec) {
+  return {
+    width: spec.width,
+    height: spec.height,
+  }
 }
 
 const pageTitleStyle = {
@@ -804,4 +1079,16 @@ const footnoteStyle = {
   textAlign: 'center',
   opacity: 0.72,
   margin: '2rem 0 0',
+}
+
+const visuallyHiddenStyle = {
+  position: 'absolute',
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+  border: 0,
 }
