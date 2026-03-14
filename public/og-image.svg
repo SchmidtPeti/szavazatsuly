@@ -1,0 +1,42 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="70" x2="1070" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F1"/>
+      <stop offset="0.58" stop-color="#F7ECDF"/>
+      <stop offset="1" stop-color="#EFDCCC"/>
+    </linearGradient>
+    <radialGradient id="emberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(970 146) rotate(120.173) scale(278.587 452.132)">
+      <stop stop-color="#E35A2B" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#E35A2B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(178 504) rotate(20.62) scale(255.775 318.884)">
+      <stop stop-color="#D79C1C" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D79C1C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="970" cy="146" r="216" fill="url(#emberGlow)"/>
+  <circle cx="178" cy="504" r="192" fill="url(#amberGlow)"/>
+
+  <g opacity="0.9">
+    <circle cx="150" cy="126" r="28" fill="#E35A2B"/>
+    <circle cx="195" cy="126" r="18" fill="#D79C1C" fill-opacity="0.92"/>
+    <circle cx="228" cy="126" r="10" fill="#E35A2B" fill-opacity="0.35"/>
+  </g>
+
+  <text x="266" y="140" fill="#8D7763" font-family="'Barlow Condensed', Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="12">SZAVAZATSÚLY</text>
+
+  <text x="120" y="258" fill="#7A6654" font-family="'Barlow Condensed', Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="8">A TE SZAVAZATOD IS</text>
+  <text x="120" y="360" fill="#E35A2B" font-family="'Barlow Condensed', Arial, sans-serif" font-size="112" font-weight="900" letter-spacing="1">DÖNTHET</text>
+  <text x="816" y="360" fill="#D79C1C" font-family="'Barlow Condensed', Arial, sans-serif" font-size="112" font-weight="900">.</text>
+
+  <rect x="120" y="418" width="960" height="1" fill="#DCC8B4"/>
+
+  <text x="120" y="488" fill="#35251B" font-family="'Barlow Condensed', Arial, sans-serif" font-size="42" font-weight="800">
+    Nézd meg, hány szavazaton múlt a győzelem a körzetedben.
+  </text>
+  <text x="120" y="544" fill="#7A6654" font-family="'Crimson Pro', Georgia, serif" font-size="34" font-style="italic" font-weight="500">
+    És mennyit számíthat a saját mozgósításod.
+  </text>
+</svg>
