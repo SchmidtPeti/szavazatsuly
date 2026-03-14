@@ -28,7 +28,7 @@ const CARD_VARIANTS = {
     kickerSize: '0.82rem',
     countSize: '6.1rem',
     unitSize: '1.55rem',
-    bodyJustify: 'space-between',
+    bodyJustify: 'flex-start',
     bodyGap: '1rem',
     bodyMarginTop: '1.15rem',
     leadDot: 12,
@@ -41,7 +41,11 @@ const CARD_VARIANTS = {
     panelValue: '1.1rem',
     panelBody: '1rem',
     panelSupport: '0.95rem',
-    footer: false,
+    footer: 'social',
+    footerTextSize: '1.68rem',
+    footerGap: 6,
+    footerLetterSpacing: '0.035em',
+    footerPaddingTop: '0.85rem',
   },
   social: {
     height: EXPORT_SPECS.social.height,
@@ -54,7 +58,7 @@ const CARD_VARIANTS = {
     kickerSize: '1rem',
     countSize: '8.9rem',
     unitSize: '2.1rem',
-    bodyJustify: 'space-between',
+    bodyJustify: 'flex-start',
     bodyGap: '1rem',
     bodyMarginTop: '1.1rem',
     leadDot: 16,
@@ -67,7 +71,11 @@ const CARD_VARIANTS = {
     panelValue: '1.7rem',
     panelBody: '1.28rem',
     panelSupport: '1.12rem',
-    footer: false,
+    footer: 'social',
+    footerTextSize: '2.14rem',
+    footerGap: 8,
+    footerLetterSpacing: '0.032em',
+    footerPaddingTop: '1rem',
   },
   print: {
     height: EXPORT_SPECS.print.height,
@@ -80,7 +88,7 @@ const CARD_VARIANTS = {
     kickerSize: '1.06rem',
     countSize: '10.8rem',
     unitSize: '2.35rem',
-    bodyJustify: 'space-between',
+    bodyJustify: 'flex-start',
     bodyGap: '1.15rem',
     bodyMarginTop: '1.2rem',
     leadDot: 18,
@@ -93,7 +101,11 @@ const CARD_VARIANTS = {
     panelValue: '1.88rem',
     panelBody: '1.36rem',
     panelSupport: '1.08rem',
-    footer: true,
+    footer: 'print',
+    footerTextSize: '2rem',
+    footerGap: 6,
+    footerLetterSpacing: '0.04em',
+    footerPaddingTop: '0.8rem',
   },
 }
 
@@ -202,7 +214,18 @@ export default function ShareCard({ oevk, mobilizCount }) {
       everyN && everyN >= 2
         ? `Ez nagyjából minden ${everyN}. otthon maradó szavazatát jelenti.`
         : null,
-    footer: 'A TE MOZGÓSÍTÁSOD IS SZÁMÍT.',
+    socialFooter: {
+      prefix: 'AZ ÉN',
+      accent: 'SZAVAZATOM',
+      suffix: 'DÖNTHET',
+      screenReaderText: 'AZ ÉN SZAVAZATOM DÖNTHET.',
+    },
+    printFooter: {
+      prefix: 'A TE MOZGÓSÍTÁSOD',
+      accent: 'IS SZÁMÍT',
+      suffix: '',
+      screenReaderText: 'A TE MOZGÓSÍTÁSOD IS SZÁMÍT.',
+    },
   }
 
   const flyerCopy = {
@@ -414,6 +437,7 @@ function SocialCardPreview({ mobilizCount, dotCount, showMore, copy, variant }) 
   const config = CARD_VARIANTS[variant]
   const leadText = variant === 'print' ? copy.printLead : copy.socialLead
   const supportText = variant === 'print' ? copy.printSupport : copy.socialSupport
+  const footerCopy = config.footer === 'print' ? copy.printFooter : copy.socialFooter
 
   return (
     <div style={cardShellStyle(config)}>
@@ -434,7 +458,7 @@ function SocialCardPreview({ mobilizCount, dotCount, showMore, copy, variant }) 
             leadText={leadText}
             supportText={supportText}
           />
-          {config.footer && <CardFooter text={copy.footer} />}
+          {config.footer && <CardFooter config={config} footer={footerCopy} />}
         </div>
       </div>
     </div>
@@ -559,13 +583,14 @@ function CardImpactPanel({ config, displayName, marginText, leadText, supportTex
   )
 }
 
-function CardFooter({ text }) {
+function CardFooter({ config, footer }) {
   return (
-    <div style={cardFooterWrapStyle}>
-      <span style={cardFooterTextStyle}>A TE MOZGÓSÍTÁSOD</span>
-      <span style={cardFooterAccentStyle}>IS SZÁMÍT.</span>
-      <span style={cardFooterDotStyle}>.</span>
-      <span style={visuallyHiddenStyle}>{text}</span>
+    <div style={cardFooterWrapStyle(config)}>
+      <span style={cardFooterTextStyle(config)}>{footer.prefix}</span>
+      <span style={cardFooterAccentStyle(config)}>{footer.accent}</span>
+      {footer.suffix && <span style={cardFooterTextStyle(config)}>{footer.suffix}</span>}
+      <span style={cardFooterDotStyle(config)}>.</span>
+      <span style={visuallyHiddenStyle}>{footer.screenReaderText}</span>
     </div>
   )
 }
@@ -802,38 +827,43 @@ function impactSupportStyle(config) {
   }
 }
 
-const cardFooterWrapStyle = {
-  display: 'flex',
-  alignItems: 'baseline',
-  gap: 6,
-  flexWrap: 'wrap',
+function cardFooterWrapStyle(config) {
+  return {
+    display: 'flex',
+    alignItems: 'baseline',
+    gap: config.footerGap,
+    flexWrap: 'wrap',
+    marginTop: 'auto',
+    paddingTop: config.footerPaddingTop,
+  }
 }
 
-const cardFooterTextStyle = {
-  fontFamily: 'Barlow Condensed, sans-serif',
-  fontWeight: 900,
-  fontSize: '2rem',
-  lineHeight: 1,
-  letterSpacing: '0.04em',
-  textTransform: 'uppercase',
-  color: 'var(--ink)',
+function cardFooterTextStyle(config) {
+  return {
+    fontFamily: 'Barlow Condensed, sans-serif',
+    fontWeight: 900,
+    fontSize: config.footerTextSize,
+    lineHeight: 1,
+    letterSpacing: config.footerLetterSpacing,
+    textTransform: 'uppercase',
+    color: 'var(--ink)',
+  }
 }
 
-const cardFooterAccentStyle = {
-  fontFamily: 'Barlow Condensed, sans-serif',
-  fontWeight: 900,
-  fontSize: '2rem',
-  lineHeight: 1,
-  letterSpacing: '0.04em',
-  textTransform: 'uppercase',
-  color: 'var(--ember)',
+function cardFooterAccentStyle(config) {
+  return {
+    ...cardFooterTextStyle(config),
+    color: 'var(--ember)',
+  }
 }
 
-const cardFooterDotStyle = {
-  color: 'var(--amber)',
-  fontSize: '2rem',
-  lineHeight: 1,
-  fontWeight: 900,
+function cardFooterDotStyle(config) {
+  return {
+    color: 'var(--amber)',
+    fontSize: config.footerTextSize,
+    lineHeight: 1,
+    fontWeight: 900,
+  }
 }
 
 function flyerAreaStyle(config) {
