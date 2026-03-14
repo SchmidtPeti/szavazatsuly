@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react'
 import { toPng } from 'html-to-image'
-import { Button } from '@/components/ui/button'
-import { Download, Share2, Loader2 } from 'lucide-react'
 
 export default function ShareCard({ oevk, mobilizCount }) {
   const cardRef = useRef(null)
@@ -11,6 +9,8 @@ export default function ShareCard({ oevk, mobilizCount }) {
   const needCount = Math.ceil(margin / mobilizCount)
   const nonVoters = oevk.non_voters
   const everyN = nonVoters ? Math.floor(nonVoters / margin) : null
+  const dotCount = Math.min(mobilizCount, 19)
+  const showMore = mobilizCount > 19
 
   async function generatePng() {
     setLoading(true)
@@ -46,102 +46,275 @@ export default function ShareCard({ oevk, mobilizCount }) {
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="font-semibold text-lg text-center">A te vállalásod</h3>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.5rem',
+        padding: '0.5rem 0 2rem',
+      }}
+    >
+      <div>
+        <h3
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontWeight: 800,
+            fontSize: '1.6rem',
+            color: 'var(--ink)',
+            margin: 0,
+            lineHeight: 1.1,
+          }}
+        >
+          A te vállalásod
+        </h3>
+        <p
+          style={{
+            fontFamily: 'Crimson Pro, Georgia, serif',
+            fontSize: '1rem',
+            fontStyle: 'italic',
+            color: 'var(--warm-gray)',
+            margin: '4px 0 0',
+          }}
+        >
+          Oszd meg, és vonj be másokat.
+        </p>
+      </div>
 
-      {/* Shareable card – captured as PNG */}
       <div
         ref={cardRef}
         style={{
           width: 360,
           height: 360,
-          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-          borderRadius: 16,
-          padding: 28,
+          background: 'linear-gradient(150deg, #fffaf3 0%, #f5ebde 52%, #efdfcf 100%)',
+          borderRadius: 28,
+          padding: '1.75rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
-          color: '#ffffff',
           boxSizing: 'border-box',
+          position: 'relative',
+          overflow: 'hidden',
+          alignSelf: 'center',
+          border: '1px solid #dec8b1',
+          boxShadow: '0 28px 60px rgba(89, 53, 24, 0.12)',
         }}
       >
-        {/* Top */}
-        <div>
-          <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: '#94a3b8', marginBottom: 4 }}>
-            A szavazatom dönthet.
-          </div>
-          <div style={{ fontSize: 13, color: '#cbd5e1' }}>
-            {oevk.oevk_name}
-          </div>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'radial-gradient(circle at 82% 78%, rgba(227,90,43,0.14) 0%, rgba(227,90,43,0) 30%), radial-gradient(circle at 14% 14%, rgba(215,156,28,0.14) 0%, rgba(215,156,28,0) 24%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, position: 'relative' }}>
+          <svg width="18" height="10" viewBox="0 0 18 10">
+            <circle cx="4" cy="5" r="4" fill="#E35A2B" />
+            <circle cx="11" cy="5" r="3" fill="#D79C1C" opacity="0.92" />
+            <circle cx="16" cy="5" r="2" fill="#E35A2B" opacity="0.35" />
+          </svg>
+          <span
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 700,
+              fontSize: '0.6rem',
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              color: '#8d7763',
+            }}
+          >
+            SzavazatSúly
+          </span>
         </div>
 
-        {/* Main commitment */}
-        <div style={{
-          background: 'rgba(255,255,255,0.1)',
-          borderRadius: 12,
-          padding: '14px 18px',
-          textAlign: 'center',
-          border: '1px solid rgba(255,255,255,0.15)',
-        }}>
-          <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 4 }}>Én vállalom:</div>
-          <div style={{ fontSize: 52, fontWeight: 900, lineHeight: 1, color: '#60a5fa' }}>
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 700,
+              fontSize: '0.8rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: '#8d7763',
+              marginBottom: 2,
+            }}
+          >
+            ÉN HOZOK
+          </div>
+          <div
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 900,
+              fontSize: '5.5rem',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              color: '#d85026',
+            }}
+          >
             {mobilizCount}
           </div>
-          <div style={{ fontSize: 15, fontWeight: 600, color: '#e2e8f0', marginTop: 4 }}>
-            embert viszek szavazni
+          <div
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 700,
+              fontSize: '1.45rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: '#34251b',
+            }}
+          >
+            EMBERT
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 5,
+              marginTop: 12,
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                width: 12,
+                height: 12,
+                borderRadius: '50%',
+                backgroundColor: '#D79C1C',
+                display: 'inline-block',
+                boxShadow: '0 10px 18px rgba(215,156,28,0.25)',
+              }}
+            />
+            {Array.from({ length: dotCount }, (_, index) => (
+              <span
+                key={index}
+                style={{
+                  width: 9,
+                  height: 9,
+                  borderRadius: '50%',
+                  backgroundColor: '#E35A2B',
+                  display: 'inline-block',
+                  opacity: 0.9,
+                }}
+              />
+            ))}
+            {showMore && (
+              <span
+                style={{
+                  color: '#8d7763',
+                  fontSize: 11,
+                  fontFamily: 'Barlow Condensed, sans-serif',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                +{mobilizCount - dotCount}
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Stats */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-          <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
-            <span style={{ color: '#94a3b8' }}>2022-es különbség: </span>
-            <strong style={{ color: '#f1f5f9' }}>{margin.toLocaleString('hu-HU')} szavazat</strong>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, position: 'relative' }}>
+          <div
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontSize: '0.65rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#8d7763',
+            }}
+          >
+            {oevk.oevk_name}
           </div>
-          <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
-            Ha <strong style={{ color: '#34d399' }}>{needCount.toLocaleString('hu-HU')} ember</strong> teszi ugyanezt
-            {' '}→ <strong style={{ color: '#34d399' }}>a körzet behozható 🎯</strong>
+          <div style={shareStatStyle}>
+            <span style={shareLabelStyle}>Különbség 2022-ben: </span>
+            <strong style={{ color: '#d85026' }}>{margin.toLocaleString('hu-HU')} szavazat</strong>
+          </div>
+          <div style={shareStatStyle}>
+            <span style={shareLabelStyle}>Ilyen csoportra lenne szükség: </span>
+            <strong style={{ color: '#94680f' }}>{needCount.toLocaleString('hu-HU')}</strong>
           </div>
           {everyN && everyN >= 2 && (
-            <div style={{ fontSize: 12, color: '#cbd5e1', lineHeight: 1.5 }}>
-              Legutóbb <strong style={{ color: '#fb923c' }}>{nonVoters.toLocaleString('hu-HU')} ember</strong> maradt otthon
-              {' '}→ minden <strong style={{ color: '#fb923c' }}>{everyN}. otthon maradónak</strong> kellene elmennie ⏰
+            <div style={shareStatStyle}>
+              <span style={shareLabelStyle}>Minden </span>
+              <strong style={{ color: '#94680f' }}>{everyN}.</strong>
+              <span style={shareLabelStyle}> otthon maradó számít</span>
             </div>
           )}
         </div>
-
-        {/* Footer */}
-        <div style={{ fontSize: 11, color: '#475569', textAlign: 'right' }}>
-          szavazatsuly.hu
-        </div>
       </div>
 
-      {/* Action buttons */}
-      <div className="space-y-2">
-        <Button
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <button
           onClick={handleShare}
-          className="w-full h-12 gap-2"
-          size="lg"
           disabled={loading}
+          style={{
+            background: loading
+              ? 'linear-gradient(180deg, #efe5d7 0%, #ead9c5 100%)'
+              : 'linear-gradient(180deg, var(--ember) 0%, var(--ember-deep) 100%)',
+            color: loading ? 'var(--warm-gray)' : 'var(--cream)',
+            border: '1px solid rgba(190, 66, 25, 0.28)',
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '1rem',
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            padding: '1rem',
+            borderRadius: 999,
+            cursor: loading ? 'not-allowed' : 'pointer',
+            width: '100%',
+            transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+            boxShadow: loading ? 'none' : '0 18px 36px rgba(227,90,43,0.18)',
+          }}
         >
-          {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Share2 className="w-5 h-5" />}
-          Megosztom
-        </Button>
-        <Button
+          {loading ? 'Feldolgozás...' : 'Megosztom'}
+        </button>
+        <button
           onClick={handleDownload}
-          variant="outline"
-          className="w-full h-11 gap-2"
           disabled={loading}
+          style={{
+            background: 'rgba(252,248,241,0.75)',
+            color: 'var(--ink)',
+            border: '1px solid var(--surface-border)',
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '0.95rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            padding: '0.85rem',
+            borderRadius: 999,
+            cursor: loading ? 'not-allowed' : 'pointer',
+            width: '100%',
+          }}
         >
-          <Download className="w-4 h-4" />
           Mentés képként
-        </Button>
+        </button>
       </div>
 
-      <p className="text-center text-xs text-muted-foreground">
-        Nem tárolunk semmilyen személyes adatot. 🔒
+      <p
+        style={{
+          fontFamily: 'Crimson Pro, Georgia, serif',
+          fontSize: '0.83rem',
+          fontStyle: 'italic',
+          color: 'var(--warm-gray)',
+          textAlign: 'center',
+          opacity: 0.78,
+          margin: 0,
+        }}
+      >
+        Nem tárolunk semmilyen személyes adatot.
       </p>
     </div>
   )
+}
+
+const shareStatStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontSize: '0.82rem',
+  color: '#34251b',
+}
+
+const shareLabelStyle = {
+  color: '#8d7763',
 }

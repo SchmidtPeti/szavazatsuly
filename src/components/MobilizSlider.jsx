@@ -1,37 +1,19 @@
 import { useState } from 'react'
-import { Slider } from '@/components/ui/slider'
-import { Card, CardContent } from '@/components/ui/card'
-import { Users2, Link2, Target } from 'lucide-react'
+import { PersonalDots, DotRatio, DotTree } from './DotDisplay'
 
 export default function MobilizSlider({ oevk, onValueChange }) {
   const [count, setCount] = useState(3)
 
-  function handleChange([val]) {
-    setCount(val)
-    onValueChange(val)
+  function handleChange(e) {
+    const value = Number(e.target.value)
+    setCount(value)
+    onValueChange(value)
   }
 
   const margin = oevk.margin
-
-  // Lánc hatás: te hozol count-ot, ők is hoznak count-ot
-  const chainRound2 = count * count
-  const chainPct = Math.min(100, Math.round((chainRound2 / margin) * 100))
-  const chainColor = chainPct >= 100
-    ? 'text-green-600'
-    : chainPct >= 80
-    ? 'text-yellow-500'
-    : chainPct >= 50
-    ? 'text-orange-500'
-    : 'text-red-500'
-
-  // Hány ilyen ember kellene a különbség behozásához?
-  const needCount = Math.ceil(margin / count)
-
-  // Kanapén maradók: minden hányadiknak kell elmenni a váltáshoz
   const nonVoters = oevk.non_voters
+  const needCount = Math.ceil(margin / count)
   const everyN = nonVoters ? Math.floor(nonVoters / margin) : null
-
-  // Szorzódó hatás: hány kör kell, ha mindenki toboroz
   const compoundRounds = (() => {
     if (count <= 1) return null
     const rounds = []
@@ -45,114 +27,285 @@ export default function MobilizSlider({ oevk, onValueChange }) {
     }
     return total >= margin ? rounds : null
   })()
-
-  const impact = count <= 2
-    ? 'Már ez is számít — indulj el ebből!'
-    : count <= 5
-    ? 'Egy kis csoport — ez már érezhető!'
-    : count <= 8
-    ? 'Komolyabb mozgás indul el tőled!'
-    : '🚀 Egy egész közösséget mozgatsz meg!'
+  const level3Total = 1 + count + count * count
+  const impact =
+    count <= 2 ? 'Már ez is számít, indulj el ebből!' :
+    count <= 5 ? 'Egy kis csoport, ez már érezhető.' :
+    count <= 8 ? 'Komolyabb mozgás indul el tőled.' :
+    'Egy egész közösséget mozgatsz meg.'
+  const fillPct = ((count - 1) / 29) * 100
 
   return (
-    <div className="space-y-4">
-      <h3 className="font-semibold text-lg text-center">Hány embert viszél szavazni?</h3>
-      <p className="text-muted-foreground text-sm text-center">
-        Húzd el a csúszkát — hány embert tudnál rávenni?
-      </p>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '2.5rem 1.5rem 1.5rem',
+        gap: '1.5rem',
+        background: 'transparent',
+      }}
+    >
+      <div>
+        <p
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '0.72rem',
+            fontWeight: 700,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'var(--warm-gray)',
+            margin: 0,
+          }}
+        >
+          {oevk.oevk_name}
+        </p>
+        <h2
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontWeight: 800,
+            fontSize: '1.75rem',
+            color: 'var(--ink)',
+            margin: '4px 0 0',
+            lineHeight: 1.1,
+          }}
+        >
+          Hány embert hozol?
+        </h2>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6 space-y-6">
-          {/* Fő szám */}
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-2">
-              <Users2 className="w-5 h-5 text-primary" />
-              <span className="text-5xl font-black text-primary tabular-nums">{count}</span>
-              <span className="text-xl font-medium">ember</span>
-            </div>
-            <p className="text-xs text-muted-foreground">(magadat is beleszámítva)</p>
-          </div>
+      <div
+        style={{
+          background: 'linear-gradient(180deg, rgba(252,248,241,0.95) 0%, rgba(239,226,211,0.86) 100%)',
+          border: '1px solid var(--surface-border)',
+          borderRadius: 28,
+          padding: '1.5rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1rem',
+          boxShadow: 'var(--surface-shadow)',
+        }}
+      >
+        <p
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '0.72rem',
+            fontWeight: 700,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'var(--warm-gray)',
+            margin: 0,
+          }}
+        >
+          Te hozol
+        </p>
 
-          <Slider
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
+          <span
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 900,
+              fontSize: '5.5rem',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              color: 'var(--ember)',
+            }}
+          >
+            {count}
+          </span>
+          <span
+            style={{
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontSize: '1.3rem',
+              color: 'var(--warm-gray)',
+              letterSpacing: '0.05em',
+              marginBottom: '0.65rem',
+            }}
+          >
+            embert
+          </span>
+        </div>
+
+        <PersonalDots count={count} />
+
+        <div style={{ width: '100%', paddingTop: '0.25rem' }}>
+          <input
+            type="range"
             min={1}
             max={30}
             step={1}
-            value={[count]}
-            onValueChange={handleChange}
-            className="w-full"
+            value={count}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              height: 6,
+              borderRadius: 999,
+              background: `linear-gradient(to right,
+                var(--ember) 0%,
+                var(--ember) ${fillPct}%,
+                var(--paper-strong) ${fillPct}%,
+                var(--paper-strong) 100%)`,
+            }}
           />
-
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>1 fő</span>
-            <span>30 fő</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+            <span style={scaleLabelStyle}>1</span>
+            <span style={scaleLabelStyle}>30</span>
           </div>
+        </div>
+      </div>
 
-          {/* 3 metrika */}
-          <div className="space-y-3">
+      <Panel label="Kollektív cél">
+        <p style={bodyCopyStyle}>
+          Ha te hozol{' '}
+          <strong style={neutralStrongStyle}>{count} embert</strong>,
+          {' '}és ugyanezt teszi{' '}
+          <strong style={accentStrongStyle}>{needCount.toLocaleString('hu-HU')} ember</strong>,
+          {' '}a körzet behozható.
+        </p>
+        <p style={supportCopyStyle}>{impact}</p>
+      </Panel>
 
-            {/* A) Kollektív cél */}
-            <Card className="bg-muted/50 border-0">
-              <CardContent className="py-3 px-4 flex items-center gap-3">
-                <Target className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <p className="text-sm">
-                  Ha te hozol <strong className="text-foreground">{count} embert</strong>, és ugyanezt
-                  teszi <strong className="text-foreground">{needCount.toLocaleString('hu-HU')} ember</strong> — a körzet behozható.
-                </p>
-              </CardContent>
-            </Card>
+      {everyN && everyN >= 2 && (
+        <Panel label="Otthon maradók">
+          <p style={bodyCopyStyle}>
+            Legutóbb{' '}
+            <strong style={neutralStrongStyle}>{nonVoters.toLocaleString('hu-HU')} ember</strong>
+            {' '}nem szavazott. Minden{' '}
+            <strong
+              style={{
+                ...neutralStrongStyle,
+                color: '#94680f',
+                fontFamily: 'Barlow Condensed, sans-serif',
+                fontSize: '1.2rem',
+              }}
+            >
+              {everyN}.
+            </strong>
+            {' '}otthon maradónak kellene elmennie.
+          </p>
+          <DotRatio lit={1} total={Math.min(everyN, 30)} dotSize={10} />
+          <p style={microCopyStyle}>Minden {everyN} pöttyből 1 számít.</p>
+        </Panel>
+      )}
 
-            {/* B) Csendes tömeg matekja – érdekesség */}
-            {nonVoters && everyN && everyN >= 2 && (
-              <Card className="bg-orange-50 border-orange-200">
-                <CardContent className="py-3 px-4">
-                  <p className="text-xs font-semibold text-orange-700 uppercase tracking-wide mb-2">⏰ AZ OTTHON MARADÓK DÖNTHETNEK</p>
-                  <p className="text-sm leading-relaxed text-orange-900">
-                    Legutóbb <strong>{nonVoters.toLocaleString('hu-HU')} ember</strong> nem ment el szavazni ebben a körzetben.
-                    A körzetváltáshoz minden <strong>{everyN}. otthon maradónak</strong> kellene elmennie.
-                  </p>
-                </CardContent>
-              </Card>
+      <Panel label="Szorzó erő">
+        {count === 1 ? (
+          <p style={{ ...bodyCopyStyle, margin: 0 }}>
+            Hozz legalább 2 embert a szorzó hatáshoz.
+          </p>
+        ) : (
+          <>
+            <p style={{ ...bodyCopyStyle, marginBottom: '1rem' }}>
+              Ha mindenki, akit hozol, szintén hoz {count} embert...
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <DotTree branches={count} maxDots={40} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'Barlow Condensed, sans-serif',
+                fontSize: '1rem',
+                color: 'var(--ink)',
+                margin: '0.85rem 0 0',
+                textAlign: 'center',
+              }}
+            >
+              3 szint mélyen{' '}
+              <strong style={{ color: 'var(--ember)', fontSize: '1.3rem' }}>
+                {level3Total.toLocaleString('hu-HU')}
+              </strong>
+              {' '}ember.
+            </p>
+            {compoundRounds && (
+              <p style={{ ...microCopyStyle, textAlign: 'center', marginTop: '0.4rem' }}>
+                {compoundRounds.length} körben eléri a {margin.toLocaleString('hu-HU')}-es különbséget.
+              </p>
             )}
-
-            {/* C) Lánc hatás */}
-            <Card className="bg-primary/5 border-primary/20">
-              <CardContent className="py-3 px-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Link2 className="w-4 h-4 text-primary" />
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wide">Lánc hatás</span>
-                </div>
-                {compoundRounds ? (() => {
-                  const total = compoundRounds[compoundRounds.length - 1].total
-                  const rounds = compoundRounds.length
-                  return (
-                    <p className="text-sm leading-relaxed">
-                      Te hozol <strong>{count} embert</strong>.
-                      {' '}Ha ők is hoznak <strong>{count} embert</strong>
-                      {rounds >= 2 && <>, és az ő embereik is hoznak <strong>{count} embert</strong></>}
-                      {rounds >= 3 && Array.from({ length: rounds - 2 }).map((_, i) => (
-                        <span key={i}>, és azok is hoznak <strong>{count} embert</strong></span>
-                      ))}
-                      {' '}→ azaz{' '}
-                      <strong className="text-primary">{rounds} kör után</strong>{' '}
-                      <strong className={`tabular-nums transition-colors duration-300 ${chainColor}`}>
-                        {total.toLocaleString('hu-HU')} szavazat
-                      </strong>
-                      , ami szintén elég a különbséghez. 🔗
-                    </p>
-                  )
-                })() : (
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Hozz legalább 2 embert a lánc hatáshoz!
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-          </div>
-
-          <p className="text-sm font-medium text-center">{impact}</p>
-        </CardContent>
-      </Card>
+          </>
+        )}
+      </Panel>
     </div>
   )
+}
+
+function Panel({ label, children }) {
+  return (
+    <div
+      style={{
+        background: 'linear-gradient(180deg, rgba(252,248,241,0.95) 0%, rgba(246,239,230,0.94) 100%)',
+        border: '1px solid var(--surface-border)',
+        borderRadius: 24,
+        padding: '1rem 1.1rem',
+        boxShadow: 'var(--surface-shadow)',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
+        <span
+          style={{
+            width: 6,
+            height: 6,
+            borderRadius: '50%',
+            backgroundColor: 'var(--ember)',
+            display: 'inline-block',
+            flexShrink: 0,
+            boxShadow: '0 8px 16px rgba(227,90,43,0.22)',
+          }}
+        />
+        <span
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '0.7rem',
+            fontWeight: 700,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'var(--warm-gray)',
+          }}
+        >
+          {label}
+        </span>
+      </div>
+      {children}
+    </div>
+  )
+}
+
+const scaleLabelStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontSize: '0.78rem',
+  color: 'var(--warm-gray)',
+}
+
+const bodyCopyStyle = {
+  fontFamily: 'Crimson Pro, Georgia, serif',
+  fontSize: '1rem',
+  fontStyle: 'italic',
+  color: 'var(--warm-gray)',
+  margin: '0 0 10px',
+  lineHeight: 1.5,
+}
+
+const supportCopyStyle = {
+  fontFamily: 'Barlow Condensed, sans-serif',
+  fontSize: '0.88rem',
+  letterSpacing: '0.04em',
+  color: 'var(--warm-gray)',
+  margin: 0,
+}
+
+const microCopyStyle = {
+  fontFamily: 'Crimson Pro, Georgia, serif',
+  fontSize: '0.85rem',
+  fontStyle: 'italic',
+  color: 'var(--warm-gray)',
+  margin: '7px 0 0',
+}
+
+const neutralStrongStyle = {
+  color: 'var(--ink)',
+  fontStyle: 'normal',
+}
+
+const accentStrongStyle = {
+  color: 'var(--ember-deep)',
+  fontStyle: 'normal',
 }
