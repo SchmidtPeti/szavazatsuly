@@ -5,11 +5,15 @@
 let zipData = null
 let oevkData = null
 
+function withBase(path) {
+  return `${import.meta.env.BASE_URL}${path}`
+}
+
 export async function loadData() {
   if (!zipData) {
     const [zipRes, oevkRes] = await Promise.all([
-      fetch('/zip_to_oevk.json'),
-      fetch('/oevk_results.json'),
+      fetch(withBase('zip_to_oevk.json')),
+      fetch(withBase('oevk_results.json')),
     ])
     zipData = await zipRes.json()
     oevkData = await oevkRes.json()
